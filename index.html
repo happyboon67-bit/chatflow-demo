@@ -23,7 +23,7 @@
   --grad:linear-gradient(135deg,#10b981,#14b8a6 55%,#0ea5a0);
   --r:20px; --shadow:0 24px 60px -12px rgba(0,0,0,.55);
   --soft:rgba(255,255,255,.015); --header-bg:rgba(7,11,20,.78); --menu-bg:rgba(7,11,20,.97);
-  --chip-bg:rgba(13,20,32,.82); --grid-line:rgba(148,163,184,.07); --net:rgba(148,163,184,.48);
+  --chip-bg:rgba(13,20,32,.82); --grid-line:rgba(148,163,184,.07);
   --badge-txt:#6ee7b7; --badge-bg:rgba(16,185,129,.09); --badge-bd:rgba(16,185,129,.3);
   --sb-thumb:#1e293b; --sb-thumb-h:#334155;
 }
@@ -31,8 +31,8 @@ html[data-theme="light"]{
   --bg:#f2f6fb; --bg2:#ffffff; --card:#ffffff; --card2:#eef3f9;
   --border:rgba(13,35,66,.1); --border2:rgba(13,35,66,.2);
   --txt:#0d1b2e; --txt-soft:#31435c; --muted:#4c617b; --dim:#7b8ea6;
-  --soft:#e9eff7; --header-bg:rgba(255,255,255,.82); --menu-bg:rgba(255,255,255,.97);
-  --chip-bg:rgba(255,255,255,.92); --grid-line:rgba(60,95,140,.1); --net:rgba(60,95,140,.38);
+  --soft:rgba(233,239,247,.85); --header-bg:rgba(255,255,255,.82); --menu-bg:rgba(255,255,255,.97);
+  --chip-bg:rgba(255,255,255,.92); --grid-line:rgba(60,95,140,.1);
   --badge-txt:#047857; --badge-bg:rgba(5,150,105,.08); --badge-bd:rgba(5,150,105,.3);
   --sb-thumb:#c4d1e2; --sb-thumb-h:#a8bdd4;
   --shadow:0 24px 60px -22px rgba(30,60,110,.22);
@@ -94,9 +94,9 @@ html:not([data-theme="light"]) .theme-btn .moon{opacity:0;transform:rotate(-90de
 .orb-3{width:340px;height:340px;background:radial-gradient(circle,rgba(236,72,153,.14),transparent 65%);top:34%;inset-inline-start:44%;animation:drift 16s ease-in-out infinite alternate}
 @keyframes drift{to{transform:translate(-46px,36px) scale(1.12)}}
 .grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(148,163,184,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.05) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 85% 62% at 50% 28%,#000 25%,transparent 72%);pointer-events:none}
-.net{position:absolute;inset:0;opacity:.95;color:var(--net);pointer-events:none;mask-image:radial-gradient(ellipse 95% 80% at 60% 32%,#000 35%,transparent 85%);filter:drop-shadow(0 0 6px rgba(52,211,153,.25))}
+#netbg{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1.4s ease}
+#netbg.on{opacity:1}
 html[data-theme="light"] .orb{opacity:.3}
-html[data-theme="light"] .net{opacity:.75}
 .hero-in{display:grid;grid-template-columns:1.05fr .95fr;gap:3.2rem;align-items:center;position:relative}
 .badge{display:inline-flex;align-items:center;gap:.5rem;padding:.42rem 1.05rem;border-radius:99px;background:var(--badge-bg);border:1px solid var(--badge-bd);color:var(--badge-txt);font-size:.83rem;font-weight:600}
 .badge .dot{width:7px;height:7px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:pulse 2s infinite}
@@ -275,6 +275,7 @@ footer{border-top:1px solid var(--border);padding:2.2rem 0;margin-top:2rem}
 </style>
 </head>
 <body>
+<canvas id="netbg" aria-hidden="true"></canvas>
 
 <div id="pb"></div>
 
@@ -310,21 +311,6 @@ footer{border-top:1px solid var(--border);padding:2.2rem 0;margin-top:2rem}
 <header class="hero" id="top">
   <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
   <div class="grid-bg"></div>
-  <svg class="net" width="100%" height="100%" aria-hidden="true">
-    <defs></defs>
-    <g stroke="currentColor" stroke-width="1.5" fill="none">
-      <path d="M80 140 L260 90 L420 170 L600 110"/><path d="M260 90 L330 260 L180 340 L80 140"/>
-      <path d="M1100 120 L940 200 L1040 330 L1210 260 L1100 120"/><path d="M940 200 L820 90"/>
-      <path d="M600 110 L760 60 L940 200"/><path d="M330 260 L520 320 L600 110"/>
-    </g>
-    <g fill="rgba(52,211,153,.9)">
-      <circle cx="80" cy="140" r="3.4"/><circle cx="260" cy="90" r="2.6"/><circle cx="420" cy="170" r="2.2"/>
-      <circle cx="600" cy="110" r="3"/><circle cx="330" cy="260" r="2.4"/><circle cx="180" cy="340" r="2"/>
-      <circle cx="760" cy="60" r="2.6"/><circle cx="1100" cy="120" r="3.2"/><circle cx="940" cy="200" r="2.4"/>
-      <circle cx="1040" cy="330" r="2.2"/><circle cx="1210" cy="260" r="2.8"/><circle cx="820" cy="90" r="2"/>
-      <circle cx="520" cy="320" r="2.2"/>
-    </g>
-  </svg>
 
   <div class="container hero-in">
     <div class="rv in">
@@ -625,6 +611,122 @@ document.querySelectorAll('.q').forEach(q=>{
     if(!wasOpen){q.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
   });
 });
+</script>
+<script>
+/* ===== شبکهٔ متحرک سراسری — Animated Plexus Network ===== */
+(function(){
+  const cv=document.getElementById('netbg');
+  if(!cv||!cv.getContext)return;
+  const ctx=cv.getContext('2d');
+  const RM=matchMedia('(prefers-reduced-motion: reduce)');
+  let dpr=1,nodes=[],raf=0,on=false;
+  const FAR=-9e5,mouse={x:FAR,y:FAR};
+
+  function palette(){
+    const light=document.documentElement.dataset.theme==='light';
+    return light
+      ?{line:'60,95,140',lineA:.34,mLine:'5,150,105',nA:.85,
+        nodes:['5,150,105','13,148,136','124,58,237']}
+      :{line:'148,163,184',lineA:.44,mLine:'52,211,153',nA:.95,
+        nodes:['52,211,153','45,212,191','167,139,250']};
+  }
+  let pal=palette();
+
+  function paint(){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    const rad=(innerWidth<640?115:165)*dpr;
+    const base=Math.max(.6,.8*dpr);
+    ctx.lineWidth=base;
+    for(let i=0;i<nodes.length;i++){
+      const a=nodes[i];
+      for(let j=i+1;j<nodes.length;j++){
+        const b=nodes[j],dx=a.x-b.x,dy=a.y-b.y;
+        if(dx>rad||dx<-rad||dy>rad||dy<-rad)continue;
+        const d=Math.sqrt(dx*dx+dy*dy);
+        if(d>=rad)continue;
+        ctx.strokeStyle='rgba('+pal.line+','+((1-d/rad)*pal.lineA).toFixed(3)+')';
+        ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+      }
+      const mdx=a.x-mouse.x,mdy=a.y-mouse.y;
+      if(mdx>-rad&&mdx<rad&&mdy>-rad&&mdy<rad){
+        const md=Math.sqrt(mdx*mdx+mdy*mdy);
+        if(md<rad){
+          ctx.strokeStyle='rgba('+pal.mLine+','+((1-md/rad)*.55).toFixed(3)+')';
+          ctx.lineWidth=base*1.3;
+          ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(mouse.x,mouse.y);ctx.stroke();
+          ctx.lineWidth=base;
+        }
+      }
+    }
+    for(let i=0;i<nodes.length;i++){
+      const n=nodes[i];
+      ctx.fillStyle='rgba('+n.c+','+(n.a*.2).toFixed(3)+')';
+      ctx.beginPath();ctx.arc(n.x,n.y,n.r*2.8,0,6.2832);ctx.fill();
+      ctx.fillStyle='rgba('+n.c+','+n.a.toFixed(3)+')';
+      ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,6.2832);ctx.fill();
+    }
+  }
+
+  function step(){
+    if(!on)return;
+    for(let i=0;i<nodes.length;i++){
+      const n=nodes[i];
+      n.x+=n.vx;n.y+=n.vy;
+      if(n.x<-60)n.x=cv.width+60;else if(n.x>cv.width+60)n.x=-60;
+      if(n.y<-60)n.y=cv.height+60;else if(n.y>cv.height+60)n.y=-60;
+    }
+    paint();
+    raf=requestAnimationFrame(step);
+  }
+  function play(){if(on||RM.matches)return;on=true;raf=requestAnimationFrame(step);}
+  function halt(){on=false;if(raf)cancelAnimationFrame(raf);raf=0;}
+
+  function build(){
+    dpr=Math.min(devicePixelRatio||1,2);
+    cv.width=Math.round(innerWidth*dpr);
+    cv.height=Math.round(innerHeight*dpr);
+    cv.style.width=innerWidth+'px';
+    cv.style.height=innerHeight+'px';
+    const count=Math.max(38,Math.min(150,Math.round(innerWidth*innerHeight/15000)));
+    const sp=.16*dpr;
+    nodes=[];
+    for(let i=0;i<count;i++){
+      const mx=(Math.random()-.5)*sp,my=(Math.random()-.5)*sp;
+      nodes.push({
+        x:Math.random()*cv.width,y:Math.random()*cv.height,
+        vx:(mx||sp*.4),vy:(my||-sp*.4),
+        r:(Math.random()*1.4+.8)*dpr,
+        c:pal.nodes[i%pal.nodes.length],
+        a:pal.nA*(Math.random()*.35+.65)
+      });
+    }
+    paint();
+  }
+
+  addEventListener('pointermove',function(e){
+    if(e.pointerType&&e.pointerType!=='mouse')return;
+    mouse.x=e.clientX*dpr;mouse.y=e.clientY*dpr;
+  },{passive:true});
+  document.addEventListener('pointerleave',function(){mouse.x=FAR;mouse.y=FAR});
+
+  let rt=0;
+  addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(build,160)},{passive:true});
+  document.addEventListener('visibilitychange',function(){document.hidden?halt():play()});
+  try{RM.addEventListener('change',function(e){e.matches?halt():play()})}catch(_){}
+
+  new MutationObserver(function(){
+    pal=palette();
+    for(let i=0;i<nodes.length;i++){
+      nodes[i].c=pal.nodes[i%pal.nodes.length];
+      nodes[i].a=pal.nA*(Math.random()*.35+.65);
+    }
+    if(RM.matches)paint();
+  }).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+
+  build();
+  play();
+  requestAnimationFrame(function(){cv.classList.add('on')});
+})();
 </script>
 </body>
 </html>
