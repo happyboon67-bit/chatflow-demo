@@ -3,66 +3,480 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>چت‌فلو | اپلیکیشن چت آنلاین مدرن</title>
+<title>چت‌فلو | پیام‌رسان مدرن لحظه‌ای — دموی آنلاین</title>
+<meta name="description" content="چت‌فلو، پیام‌رسان مدرن و لحظه‌ای با رابط کاربری فارسی، گفتگوی گروهی، کانال، تماس و امنیت پیشرفته. مشاهده دموی آنلاین و خرید از راست‌چین.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%2310b981'/><path d='M30 32h40a8 8 0 018 8v16a8 8 0 01-8 8H52l-12 10v-10H30a8 8 0 01-8-8V40a8 8 0 018-8z' fill='white'/></svg>">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Segoe UI', Tahoma, Arial, sans-serif; background:#0f172a; color:#e2e8f0; line-height:1.9; }
-  .container { max-width:1100px; margin:0 auto; padding:0 20px; }
-  header { text-align:center; padding:64px 16px 24px; }
-  .badge { display:inline-block; background:#1e293b; color:#7dd3fc; border:1px solid #334155; border-radius:999px; padding:4px 18px; font-size:14px; margin-bottom:18px; }
-  header h1 { font-size:42px; color:#ffffff; margin-bottom:10px; }
-  header p { color:#94a3b8; font-size:18px; max-width:640px; margin:0 auto; }
-  .cta { display:inline-block; margin-top:28px; background:#16a34a; color:#fff; padding:14px 40px; border-radius:12px; text-decoration:none; font-size:18px; font-weight:bold; }
-  .cta:hover { background:#15803d; }
-  h2 { font-size:28px; color:#fff; margin:56px 0 24px; text-align:center; }
-  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
-  .shot { background:#1e293b; border:1px solid #334155; border-radius:16px; overflow:hidden; display:block; text-decoration:none; }
-  .shot img { width:100%; display:block; }
-  .shot .cap { padding:10px 14px; font-size:14px; color:#94a3b8; }
-  .features { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; }
-  .feat { background:#1e293b; border:1px solid #334155; border-radius:16px; padding:22px 16px; text-align:center; }
-  .feat .ic { font-size:34px; }
-  .feat h3 { color:#fff; font-size:17px; margin:8px 0 4px; }
-  .feat p { font-size:14px; color:#94a3b8; }
-  footer { text-align:center; padding:44px 16px; color:#64748b; font-size:14px; border-top:1px solid #1e293b; margin-top:60px; }
+:root{
+  --bg:#070b14; --bg2:#0a101d; --card:rgba(255,255,255,.035); --card2:rgba(255,255,255,.06);
+  --border:rgba(255,255,255,.08); --border2:rgba(255,255,255,.14);
+  --txt:#e8edf5; --muted:#94a3b8; --dim:#64748b;
+  --em:#10b981; --teal:#14b8a6; --violet:#8b5cf6; --pink:#ec4899;
+  --grad:linear-gradient(135deg,#10b981,#14b8a6 55%,#0ea5a0);
+  --r:20px; --shadow:0 24px 60px -12px rgba(0,0,0,.55);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Vazirmatn,system-ui,sans-serif;background:var(--bg);color:var(--txt);line-height:1.9;overflow-x:hidden}
+::selection{background:rgba(16,185,129,.35)}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.container{width:min(1180px,92%);margin-inline:auto}
+.num{font-feature-settings:"ss01"}
+
+/* ---------- scrollbar ---------- */
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#1e293b;border-radius:8px;border:2px solid var(--bg)}
+::-webkit-scrollbar-thumb:hover{background:#334155}
+
+/* ---------- nav ---------- */
+nav{position:fixed;inset-inline:0;top:0;z-index:50;transition:.35s;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(7,11,20,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom-color:var(--border)}
+.nav-in{display:flex;align-items:center;gap:2rem;height:74px}
+.logo{display:flex;align-items:center;gap:.7rem;font-weight:800;font-size:1.25rem}
+.logo-mark{width:42px;height:42px;border-radius:13px;background:var(--grad);display:grid;place-items:center;box-shadow:0 8px 24px -6px rgba(16,185,129,.55)}
+.logo small{display:block;font-size:.62rem;color:var(--muted);font-weight:400;line-height:1.4}
+.nav-links{display:flex;gap:1.8rem;margin-inline-start:auto;font-size:.92rem;color:var(--muted)}
+.nav-links a{transition:.2s;position:relative}
+.nav-links a:hover{color:var(--txt)}
+.nav-links a::after{content:"";position:absolute;bottom:-6px;inset-inline-start:0;width:0;height:2px;background:var(--grad);border-radius:2px;transition:.25s}
+.nav-links a:hover::after{width:100%}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;padding:.8rem 1.7rem;border-radius:14px;font-weight:700;font-size:.95rem;transition:.28s;position:relative}
+.btn-primary{background:var(--grad);color:#04120c;box-shadow:0 12px 32px -8px rgba(16,185,129,.5)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px -8px rgba(16,185,129,.65)}
+.btn-ghost{border:1px solid var(--border2);color:var(--txt);background:var(--card)}
+.btn-ghost:hover{background:var(--card2);border-color:rgba(255,255,255,.25);transform:translateY(-2px)}
+.btn-sm{padding:.55rem 1.25rem;border-radius:12px;font-size:.88rem}
+.nav-toggle{display:none;margin-inline-start:auto;font-size:1.5rem;line-height:1;padding:.4rem .6rem;border-radius:10px;border:1px solid var(--border)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:9.2rem 0 4rem;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;pointer-events:none}
+.orb-1{width:560px;height:560px;background:radial-gradient(circle,rgba(16,185,129,.32),transparent 65%);top:-160px;inset-inline-start:-120px;animation:drift 14s ease-in-out infinite alternate}
+.orb-2{width:520px;height:520px;background:radial-gradient(circle,rgba(139,92,246,.26),transparent 65%);bottom:-180px;inset-inline-end:-100px;animation:drift 18s ease-in-out infinite alternate-reverse}
+.orb-3{width:340px;height:340px;background:radial-gradient(circle,rgba(236,72,153,.14),transparent 65%);top:34%;inset-inline-start:44%;animation:drift 16s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(-46px,36px) scale(1.12)}}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(148,163,184,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.05) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 85% 62% at 50% 28%,#000 25%,transparent 72%);pointer-events:none}
+.net{position:absolute;inset:0;opacity:.5;pointer-events:none;mask-image:radial-gradient(ellipse 70% 60% at 60% 30%,#000 10%,transparent 70%)}
+.hero-in{display:grid;grid-template-columns:1.05fr .95fr;gap:3.2rem;align-items:center;position:relative}
+.badge{display:inline-flex;align-items:center;gap:.5rem;padding:.42rem 1.05rem;border-radius:99px;background:rgba(16,185,129,.09);border:1px solid rgba(16,185,129,.3);color:#6ee7b7;font-size:.83rem;font-weight:600}
+.badge .dot{width:7px;height:7px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+h1{font-size:clamp(2.3rem,5.2vw,3.7rem);font-weight:900;line-height:1.35;margin:1.15rem 0 .4rem}
+h1 .grad{background:linear-gradient(120deg,#34d399,#2dd4bf 40%,#a78bfa);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-sub{font-size:clamp(1.02rem,2vw,1.22rem);font-weight:700;color:#cbd5e1;margin-bottom:.7rem}
+.hero p.lead{color:var(--muted);font-size:.98rem;max-width:33rem;margin-bottom:1.9rem}
+.hero-cta{display:flex;gap:.9rem;flex-wrap:wrap;align-items:center}
+.hero-trust{display:flex;gap:1.4rem;flex-wrap:wrap;margin-top:1.7rem;color:var(--dim);font-size:.83rem}
+.hero-trust span{display:inline-flex;align-items:center;gap:.42rem}
+.hero-trust svg{color:#34d399}
+
+/* phone mockup */
+.mock-wrap{position:relative;display:grid;place-items:center;min-height:560px}
+.phone{width:288px;border-radius:46px;border:1px solid rgba(255,255,255,.16);background:linear-gradient(160deg,#1c2534,#0d1420);padding:12px;box-shadow:var(--shadow),0 0 0 1px rgba(0,0,0,.6),0 0 90px -18px rgba(16,185,129,.4);position:relative;animation:floaty 6.5s ease-in-out infinite}
+@keyframes floaty{50%{transform:translateY(-15px)}}
+.phone::before{content:"";position:absolute;top:11px;left:50%;transform:translateX(-50%);width:106px;height:24px;background:#05080e;border-radius:14px;z-index:3;border:1px solid rgba(255,255,255,.06)}
+.phone::after{content:"";position:absolute;top:16px;left:calc(50% - 28px);transform:translateX(-50%);width:9px;height:9px;border-radius:50%;background:#0f1a2a;z-index:4;box-shadow:inset 0 0 2px 1px #1e2b40}
+.phone .screen{border-radius:36px;overflow:hidden;background:#0d1420}
+.phone .screen img{width:100%;height:auto}
+.chip{position:absolute;display:flex;align-items:center;gap:.6rem;padding:.7rem 1.05rem;border-radius:16px;background:rgba(13,20,32,.82);border:1px solid var(--border2);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font-size:.85rem;font-weight:600;box-shadow:0 16px 40px -12px rgba(0,0,0,.6);white-space:nowrap}
+.chip .ico{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;font-size:1rem}
+.chip small{display:block;color:var(--muted);font-size:.72rem;font-weight:400;line-height:1.5}
+.chip-1{top:9%;inset-inline-start:2%;animation:floaty 7s 0.6s ease-in-out infinite}
+.chip-2{bottom:17%;inset-inline-end:0;animation:floaty 8s 1.1s ease-in-out infinite}
+.chip-3{bottom:1%;inset-inline-start:9%;animation:floaty 7.4s 0.3s ease-in-out infinite}
+.chip-1 .ico{background:rgba(52,211,153,.16)}
+.chip-2 .ico{background:rgba(139,92,246,.18)}
+.chip-3 .ico{background:rgba(236,72,153,.16)}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3.6rem;position:relative}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.35rem 1rem;text-align:center;transition:.3s}
+.stat:hover{background:var(--card2);transform:translateY(-4px);border-color:rgba(16,185,129,.35)}
+.stat b{display:block;font-size:1.65rem;font-weight:900;background:linear-gradient(120deg,#34d399,#2dd4bf);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{color:var(--muted);font-size:.84rem}
+
+/* ---------- sections ---------- */
+section{padding:5.2rem 0}
+.sec-head{text-align:center;max-width:38rem;margin:0 auto 3.2rem}
+.sec-tag{display:inline-flex;align-items:center;gap:.45rem;color:#6ee7b7;font-size:.82rem;font-weight:700;letter-spacing:.02em;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25);padding:.35rem 1rem;border-radius:99px}
+h2{font-size:clamp(1.65rem,3.4vw,2.4rem);font-weight:900;margin:.9rem 0 .5rem;line-height:1.5}
+.sec-head p{color:var(--muted);font-size:.97rem}
+
+/* gallery */
+.tabs{display:inline-flex;gap:.3rem;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:.3rem;margin-bottom:2.4rem}
+.tabs button{padding:.55rem 1.35rem;border-radius:11px;font-size:.88rem;font-weight:600;color:var(--muted);transition:.25s}
+.tabs button.on{background:var(--grad);color:#04120c;box-shadow:0 8px 22px -6px rgba(16,185,129,.45)}
+.tabs-wrap{text-align:center}
+.gal{display:grid;grid-template-columns:repeat(12,1fr);gap:1.15rem}
+.shot{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);background:var(--card);cursor:zoom-in;transition:.35s}
+.shot:hover{border-color:rgba(16,185,129,.45);transform:translateY(-6px);box-shadow:0 30px 60px -18px rgba(0,0,0,.6)}
+.shot img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.shot:hover img{transform:scale(1.045)}
+.shot .cap{position:absolute;inset-inline:0;bottom:0;padding:1.7rem 1.1rem .85rem;background:linear-gradient(transparent,rgba(4,8,15,.92));font-size:.85rem;font-weight:600;display:flex;align-items:flex-end;justify-content:space-between;gap:.6rem}
+.shot .cap svg{color:#34d399;flex-shrink:0;opacity:0;transform:translateY(4px);transition:.3s}
+.shot:hover .cap svg{opacity:1;transform:none}
+.shot.wide{grid-column:span 6}
+.shot.full{grid-column:span 12}
+.shot.mob{grid-column:span 4;aspect-ratio:9/17.5;max-width:305px;justify-self:center;width:100%}
+.gal.hide-desktop .shot:not(.mob){display:none}
+.gal.hide-mobile .shot.mob{display:none}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(4,7,13,.92);backdrop-filter:blur(10px);display:none;place-items:center;padding:2rem}
+.lb.open{display:grid}
+.lb img{max-width:min(1080px,94vw);max-height:82vh;border-radius:18px;border:1px solid var(--border2);box-shadow:var(--shadow)}
+.lb .lb-cap{text-align:center;color:#cbd5e1;font-size:.92rem;margin-top:1rem;font-weight:600}
+.lb .x{position:absolute;top:1.4rem;inset-inline-start:1.4rem;width:44px;height:44px;border-radius:12px;background:var(--card2);border:1px solid var(--border2);display:grid;place-items:center;font-size:1.15rem;transition:.2s}
+.lb .x:hover{background:rgba(239,68,68,.2);border-color:rgba(239,68,68,.5)}
+.lb .arrow{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:14px;background:var(--card2);border:1px solid var(--border2);display:grid;place-items:center;transition:.2s}
+.lb .arrow:hover{background:rgba(16,185,129,.18);border-color:rgba(16,185,129,.5)}
+.lb .prev{inset-inline-start:1.4rem}.lb .next{inset-inline-end:1.4rem}
+
+/* features */
+.feats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.15rem}
+.feat{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.6rem 1.4rem;transition:.32s;position:relative;overflow:hidden}
+.feat::before{content:"";position:absolute;inset:0;background:radial-gradient(420px 130px at var(--mx,50%) -20%,rgba(16,185,129,.12),transparent 70%);opacity:0;transition:.3s}
+.feat:hover{transform:translateY(-6px);border-color:rgba(16,185,129,.4);background:var(--card2)}
+.feat:hover::before{opacity:1}
+.feat .fi{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;margin-bottom:1.05rem;background:var(--grad);box-shadow:0 10px 26px -8px rgba(16,185,129,.5)}
+.feat:nth-child(2n) .fi{background:linear-gradient(135deg,#8b5cf6,#6d28d9);box-shadow:0 10px 26px -8px rgba(139,92,246,.5)}
+.feat:nth-child(3n) .fi{background:linear-gradient(135deg,#ec4899,#be185d);box-shadow:0 10px 26px -8px rgba(236,72,153,.5)}
+.feat b{display:block;font-size:1.02rem;font-weight:800;margin-bottom:.35rem;position:relative}
+.feat p{color:var(--muted);font-size:.87rem;position:relative}
+
+/* tech */
+.tech{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem}
+.tech span{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.3rem;border-radius:99px;background:var(--card);border:1px solid var(--border);font-size:.88rem;color:#cbd5e1;transition:.25s}
+.tech span:hover{border-color:rgba(16,185,129,.45);color:#fff;transform:translateY(-3px)}
+.tech .t-dot{width:8px;height:8px;border-radius:50%;background:var(--grad)}
+
+/* cta */
+.cta-panel{position:relative;border-radius:28px;padding:3.6rem 2rem;text-align:center;background:linear-gradient(160deg,rgba(16,185,129,.14),rgba(139,92,246,.1));border:1px solid rgba(16,185,129,.3);overflow:hidden}
+.cta-panel::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,.22),transparent 65%);top:-190px;inset-inline-start:calc(50% - 210px);pointer-events:none}
+.cta-panel h2{position:relative}
+.cta-panel p{color:var(--muted);max-width:32rem;margin:.4rem auto 1.9rem;position:relative}
+.cta-btns{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;position:relative}
+.cta-note{margin-top:1.3rem;font-size:.8rem;color:var(--dim);position:relative}
+
+/* faq */
+.faq{max-width:46rem;margin-inline:auto}
+.q{border:1px solid var(--border);border-radius:18px;background:var(--card);margin-bottom:.85rem;overflow:hidden;transition:.3s}
+.q:hover{border-color:var(--border2)}
+.q.open{border-color:rgba(16,185,129,.4);background:var(--card2)}
+.q button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.15rem 1.4rem;font-size:.97rem;font-weight:700;text-align:start}
+.q .pm{width:30px;height:30px;border-radius:10px;background:var(--card2);border:1px solid var(--border2);display:grid;place-items:center;flex-shrink:0;transition:.3s;color:#34d399;font-size:1.05rem}
+.q.open .pm{transform:rotate(45deg);background:rgba(16,185,129,.15)}
+.q .a{max-height:0;overflow:hidden;transition:max-height .38s ease}
+.q .a p{padding:0 1.4rem 1.2rem;color:var(--muted);font-size:.9rem}
+
+/* footer */
+footer{border-top:1px solid var(--border);padding:2.2rem 0;margin-top:2rem}
+.foot{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--dim);font-size:.85rem}
+.foot .logo{font-size:1.02rem}
+.foot .logo-mark{width:34px;height:34px;border-radius:10px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+
+/* responsive */
+@media(max-width:1024px){
+  .hero-in{grid-template-columns:1fr;text-align:center;gap:2.4rem}
+  .hero p.lead{margin-inline:auto}
+  .hero-cta,.hero-trust{justify-content:center}
+  .mock-wrap{min-height:0;margin-top:.6rem}
+  .feats{grid-template-columns:repeat(2,1fr)}
+  .shot.wide{grid-column:span 12}
+  .shot.mob{grid-column:span 4}
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:680px){
+  .nav-links,.nav-cta{display:none}
+  .nav-toggle{display:block}
+  .nav.open .nav-links{display:flex;position:fixed;inset:74px 0 auto 0;flex-direction:column;background:rgba(7,11,20,.97);backdrop-filter:blur(20px);padding:1.4rem 6%;gap:1.1rem;border-bottom:1px solid var(--border)}
+  .nav.open .nav-links a{font-size:1.05rem}
+  .hero{padding-top:7.4rem}
+  .feats{grid-template-columns:1fr}
+  .shot.mob{grid-column:span 12;max-width:290px}
+  .chip{transform:scale(.82)}
+  .chip-1{inset-inline-start:-2%}
+  .stats b{font-size:1.3rem}
+  .lb .arrow{width:42px;height:42px}
+  section{padding:3.6rem 0}
+}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="badge">🚀 دموی آنلاین</div>
-  <h1>چت‌فلو 💬</h1>
-  <p>تجربه‌ی چت آنلاین مدرن و برق‌آسا — پیام‌رسانی لحظه‌ای، تماس گروهی، رابط کاربری زیبا و پشتیبانی کامل از موبایل</p>
-  <a class="cta" href="#screenshots">مشاهده دمو 👇</a>
+<!-- ================= NAV ================= -->
+<nav id="nav" class="nav">
+  <div class="container nav-in">
+    <a href="#top" class="logo">
+      <span class="logo-mark">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#04120c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+      </span>
+      <span>چت‌فلو<small>پیام‌رسان لحظه‌ای</small></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#gallery">تصاویر برنامه</a>
+      <a href="#features">امکانات</a>
+      <a href="#faq">پرسش‌های متداول</a>
+      <a href="#buy" class="btn btn-primary btn-sm nav-cta">خرید از راست‌چین</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="منو">☰</button>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+  <div class="grid-bg"></div>
+  <svg class="net" width="100%" height="100%" aria-hidden="true">
+    <defs></defs>
+    <g stroke="rgba(148,163,184,.13)" stroke-width="1" fill="none">
+      <path d="M80 140 L260 90 L420 170 L600 110"/><path d="M260 90 L330 260 L180 340 L80 140"/>
+      <path d="M1100 120 L940 200 L1040 330 L1210 260 L1100 120"/><path d="M940 200 L820 90"/>
+      <path d="M600 110 L760 60 L940 200"/><path d="M330 260 L520 320 L600 110"/>
+    </g>
+    <g fill="rgba(52,211,153,.55)">
+      <circle cx="80" cy="140" r="3.4"/><circle cx="260" cy="90" r="2.6"/><circle cx="420" cy="170" r="2.2"/>
+      <circle cx="600" cy="110" r="3"/><circle cx="330" cy="260" r="2.4"/><circle cx="180" cy="340" r="2"/>
+      <circle cx="760" cy="60" r="2.6"/><circle cx="1100" cy="120" r="3.2"/><circle cx="940" cy="200" r="2.4"/>
+      <circle cx="1040" cy="330" r="2.2"/><circle cx="1210" cy="260" r="2.8"/><circle cx="820" cy="90" r="2"/>
+      <circle cx="520" cy="320" r="2.2"/>
+    </g>
+  </svg>
+
+  <div class="container hero-in">
+    <div class="rv in">
+      <span class="badge"><span class="dot"></span> نسخه ۲.۰ منتشر شد — پشتیبانی از تماس گروهی</span>
+      <h1>با <span class="grad">چت‌فلو</span><br>تیمت همیشه آنلاینه</h1>
+      <p class="hero-sub">پیام‌رسان مدرن، سریع و کاملاً فارسی برای تیم‌ها و کسب‌وکارها</p>
+      <p class="lead">گفتگوی خصوصی، گروه و کانال با سرعت لحظه‌ای؛ همراه با ری‌اکشن، پاسخ، نظرسنجی، ارسال فایل و ویس، تأیید دو مرحله‌ای و حالت شب و روز — همه در یک برنامهٔ زیبا و به‌روز.</p>
+      <div class="hero-cta">
+        <a href="#gallery" class="btn btn-primary">مشاهده تصاویر برنامه
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+        </a>
+        <a href="#features" class="btn btn-ghost">امکانات کامل</a>
+      </div>
+      <div class="hero-trust">
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> سورس کامل و قابل نصب</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> رابط کاملاً فارسی و راست‌چین</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> نصب روی هاست شخصی</span>
+      </div>
+    </div>
+
+    <div class="mock-wrap">
+      <div class="phone">
+        <div class="screen"><img src="s10.jpg" alt="نمای چت خصوصی در نسخه موبایل چت‌فلو" width="264" height="571"></div>
+      </div>
+      <div class="chip chip-1"><span class="ico">🟢</span><span>۳ عضو آنلاین<small>در گروه «تیم پروژه آریا»</small></span></div>
+      <div class="chip chip-2"><span class="ico">🎉</span><span>ری‌اکشن جدید<small>نیما روی پیام شما واکنش گذاشت</small></span></div>
+      <div class="chip chip-3"><span class="ico">💬</span><span>پیام جدید<small>سارا: بودجه پروژه تأیید شده ✅</small></span></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="stats rv">
+      <div class="stat"><b>+۸</b><span>قابلیت حرفه‌ای</span></div>
+      <div class="stat"><b>۱۰۰٪</b><span>فارسی و راست‌چین</span></div>
+      <div class="stat"><b>۲</b><span>تم تیره و روشن</span></div>
+      <div class="stat"><b>لحظه‌ای</b><span>تحویل پیام با WebSocket</span></div>
+    </div>
+  </div>
 </header>
 
-<div class="container">
+<!-- ================= GALLERY ================= -->
+<section id="gallery">
+  <div class="container">
+    <div class="sec-head rv">
+      <span class="sec-tag">گالری برنامه</span>
+      <h2>یک نگاه به داخل چت‌فلو</h2>
+      <p>همهٔ تصاویر از اجرای واقعی برنامه گرفته شده‌اند. روی هر تصویر کلیک کنید تا بزرگ‌تر ببینید.</p>
+    </div>
+    <div class="tabs-wrap rv">
+      <div class="tabs" id="tabs">
+        <button class="on" data-f="all">همه</button>
+        <button data-f="d">دسکتاپ</button>
+        <button data-f="m">موبایل</button>
+      </div>
+    </div>
 
-  <h2 id="screenshots">🖼 تصاویر برنامه</h2>
-  <div class="grid">
-    <a class="shot" href="shot1.jpg" target="_blank"><img src="shot1.jpg" alt="صفحه ورود و ثبت‌نام"><div class="cap">صفحه ورود و ثبت‌نام با انتخاب رنگ آواتار</div></a>
-    <a class="shot" href="shot2.jpg" target="_blank"><img src="shot2.jpg" alt="لیست گفتگوها"><div class="cap">لیست گفتگوها و کاربران آنلاین</div></a>
-    <a class="shot" href="shot3.jpg" target="_blank"><img src="shot3.jpg" alt="چت دوطرفه"><div class="cap">چت خصوصی با پیام‌رسانی لحظه‌ای</div></a>
-    <a class="shot" href="shot4.jpg" target="_blank"><img src="shot4.jpg" alt="کانالهای گروهی"><div class="cap">کانال‌های گروهی (تم روشن)</div></a>
-    <a class="shot" href="shot5.jpg" target="_blank"><img src="shot5.jpg" alt="نسخه موبایل"><div class="cap">نسخه موبایل — کاملاً ریسپانسیو</div></a>
-    <a class="shot" href="shot6.jpg" target="_blank"><img src="shot6.jpg" alt="ویرایش پروفایل"><div class="cap">پروفایل، آواتار و تنظیمات امنیتی</div></a>
+    <div class="gal rv" id="gal">
+      <figure class="shot wide" data-t="d"><img src="s1.jpg" alt="صفحه ساخت اکانت و ورود" loading="lazy"><figcaption class="cap">صفحه ساخت اکانت و ورود <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><img src="s2.jpg" alt="گفتگوی خصوصی با ری‌اکشن" loading="lazy"><figcaption class="cap">گفتگوی خصوصی با ری‌اکشن و تیک خوانده‌شدن <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><img src="s3.jpg" alt="گفتگوی گروهی" loading="lazy"><figcaption class="cap">گفتگوی گروهی با چند کاربر و ری‌اکشن <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><img src="s4.jpg" alt="کانال اطلاع‌رسانی" loading="lazy"><figcaption class="cap">کانال اطلاع‌رسانی با تقسیم‌بندی تاریخ <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><img src="s5.jpg" alt="حالت روشن" loading="lazy"><figcaption class="cap">حالت روشن — تم روز <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><img src="s6.jpg" alt="ویرایش پروفایل" loading="lazy"><figcaption class="cap">ویرایش پروفایل و انتخاب رنگ آواتار <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><img src="s7.jpg" alt="ساخت کانال جدید" loading="lazy"><figcaption class="cap">ساخت کانال عمومی یا خصوصی جدید <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><img src="s8.jpg" alt="ایموجی‌پیکر" loading="lazy"><figcaption class="cap">ایموجی‌پیکر دسته‌بندی‌شده <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot mob" data-t="m"><img src="s9.jpg" alt="نسخه موبایل — لیست گفتگوها" loading="lazy"><figcaption class="cap">نسخه موبایل — لیست گفتگوها <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot mob" data-t="m"><img src="s10.jpg" alt="نسخه موبایل — گفتگو" loading="lazy"><figcaption class="cap">نسخه موبایل — تم تیره <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot mob" data-t="m"><img src="s11.jpg" alt="نسخه موبایل — تم روشن" loading="lazy"><figcaption class="cap">نسخه موبایل — تم روشن <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+    </div>
   </div>
+</section>
 
-  <h2>✨ امکانات</h2>
-  <div class="features">
-    <div class="feat"><div class="ic">⚡</div><h3>پیام‌رسانی لحظه‌ای</h3><p>ارسال و دریافت فوری پیام با Socket.io</p></div>
-    <div class="feat"><div class="ic">👥</div><h3>کانال‌ها و چت گروهی</h3><p>کانال عمومی و خصوصی با عضویت تیمی</p></div>
-    <div class="feat"><div class="ic">📹</div><h3>تماس تصویری و صوتی</h3><p>مکالمه چهره‌به‌چهره داخل چت</p></div>
-    <div class="feat"><div class="ic">🔐</div><h3>امنیت پیشرفته</h3><p>ورود امن + رمز دومرحله‌ای (2FA)</p></div>
-    <div class="feat"><div class="ic">📎</div><h3>فایل و پیام صوتی</h3><p>ارسال عکس، فایل و ویس در گفتگو</p></div>
-    <div class="feat"><div class="ic">🌙</div><h3>تم تیره و روشن</h3><p>ظاهر مدرن با هر دو حالت شب و روز</p></div>
-    <div class="feat"><div class="ic">🇮🇷</div><h3>فارسی و انگلیسی</h3><p>رابط راست‌چین با تغییر زبان یک‌کلیکی</p></div>
-    <div class="feat"><div class="ic">📱</div><h3>سازگار با موبایل</h3><p>طراحی ریسپانسیو برای همه دستگاه‌ها</p></div>
+<!-- lightbox -->
+<div class="lb" id="lb" role="dialog" aria-label="نمایش تصویر بزرگ">
+  <button class="x" id="lbX" aria-label="بستن">✕</button>
+  <button class="arrow prev" id="lbPrev" aria-label="قبلی">›</button>
+  <button class="arrow next" id="lbNext" aria-label="بعدی">‹</button>
+  <div style="text-align:center">
+    <img id="lbImg" src="" alt="">
+    <div class="lb-cap" id="lbCap"></div>
   </div>
-
 </div>
 
-<footer>© چت‌فلو — تمامی حقوق محفوظ است.</footer>
+<!-- ================= FEATURES ================= -->
+<section id="features" style="background:linear-gradient(rgba(255,255,255,.015),transparent)">
+  <div class="container">
+    <div class="sec-head rv">
+      <span class="sec-tag">امکانات</span>
+      <h2>هر چیزی که از یک پیام‌رسان حرفه‌ای انتظار دارید</h2>
+      <p>چت‌فلو فقط یک چت ساده نیست؛ یک پلتفرم کامل ارتباطی است.</p>
+    </div>
+    <div class="feats">
+      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#04120c" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><b>پیام‌رسانی لحظه‌ای</b><p>تحویل فوری پیام با فناوری WebSocket و تیک خوانده‌شدن، بدون رفرش صفحه.</p></div>
+      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><b>گروه و کانال</b><p>ساخت گروه‌های چندنفره و کانال‌های عمومی یا خصوصی با دعوت‌نامه و مدیریت اعضا.</p></div>
+      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg></span><b>ری‌اکشن و پاسخ</b><p>واکنشگذاری با ایموجی روی هر پیام، پاسخ به پیام و پین کردن پیام‌های مهم.</p></div>
+      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#04120c" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2" ry="2"/></svg></span><b>تماس صوتی و تصویری</b><p>تماس مستقیم با کاربران و تماس گروهی داخل گروه‌ها، بدون ابزار جانبی.</p></div>
+      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><b>امنیت پیشرفته</b><p>تأیید دو مرحله‌ای (2FA)، رمزنگاری پسوردها و سیستم گزارش و مسدودسازی کاربران.</p></div>
+      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg></span><b>فایل، عکس و پیام صوتی</b><p>ارسال عکس، فایل و ضبط پیام صوتی داخل چت با پیش‌نمایش و دانلود مستقیم.</p></div>
+      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></span><b>نظرسنجی</b><p>ساخت نظرسنجی داخل گروه برای تصمیم‌گیری‌های سریع و شفاف تیمی.</p></div>
+      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#04120c" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span><b>حالت شب و روز</b><p>تم تیره و روشن با سوییچ یک‌کلیکی و ذخیرهٔ خودکار انتخاب کاربر.</p></div>
+    </div>
 
+    <div class="sec-head rv" style="margin-top:4.2rem;margin-bottom:1.6rem">
+      <span class="sec-tag">تکنولوژی</span>
+      <h2 style="font-size:1.5rem">ساخته‌شده با ابزارهای مدرن و به‌روز</h2>
+    </div>
+    <div class="tech rv">
+      <span><i class="t-dot"></i> Next.js 16</span>
+      <span><i class="t-dot"></i> React 19</span>
+      <span><i class="t-dot"></i> WebSocket / Socket.IO</span>
+      <span><i class="t-dot"></i> SQLite و PostgreSQL</span>
+      <span><i class="t-dot"></i> Tailwind CSS</span>
+      <span><i class="t-dot"></i> JWT و bcrypt</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section id="buy">
+  <div class="container">
+    <div class="cta-panel rv">
+      <h2>همین امروز چت‌فلو را به تیم خود اضافه کنید</h2>
+      <p>سورس کامل برنامه را از راست‌چین خریداری کنید، روی هاست خودتان نصب کنید و داده‌هایتان نزد خودتان بماند.</p>
+      <div class="cta-btns">
+        <a class="btn btn-primary" href="https://rastchin.com" target="_blank" rel="noopener">خرید از راست‌چین
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#gallery">مشاهده دوبارهٔ تصاویر</a>
+      </div>
+      <p class="cta-note">تحویل فوری پس از خرید • شامل راهنمای نصب • پشتیبانی فارسی</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq" style="padding-top:0">
+  <div class="container">
+    <div class="sec-head rv">
+      <span class="sec-tag">پرسش‌های متداول</span>
+      <h2>سوالی دارید؟</h2>
+    </div>
+    <div class="faq rv">
+      <div class="q"><button>چت‌فلو روی چه هاست‌هایی نصب می‌شود؟ <span class="pm">+</span></button><div class="a"><p>چت‌فلو یک برنامهٔ Node.js است و روی هر هاستی که Node.js یا Bun پشتیبانی کند نصب می‌شود؛ از هاست‌های ایرانی مثل لیارا و چابکان گرفته تا سرورهای خارجی. راهنمای گام‌به‌گام نصب همراه سورس ارائه می‌شود.</p></div></div>
+      <div class="q"><button>رابط کاربری کاملاً فارسی است؟ <span class="pm">+</span></button><div class="a"><p>بله؛ چت‌فلو از ابتدا برای فارسی و راست‌چین طراحی شده و به‌صورت پیش‌فرض فارسی اجرا می‌شود. زبان انگلیسی هم داخل برنامه قابل انتخاب است.</p></div></div>
+      <div class="q"><button>آیا پیام‌ها به‌صورت لحظه‌ای ارسال می‌شوند؟ <span class="pm">+</span></button><div class="a"><p>بله؛ ارتباط با فناوری WebSocket برقرار می‌شود و پیام‌ها، ری‌اکشن‌ها و وضعیت آنلاین بودن اعضا بدون رفرش صفحه به‌صورت زنده به‌روزرسانی می‌شوند.</p></div></div>
+      <div class="q"><button>داده‌ها کجا ذخیره می‌شوند؟ <span class="pm">+</span></button><div class="a"><p>داده‌ها روی هاست خود شما ذخیره می‌شوند. به‌صورت پیش‌فرض از SQLite استفاده می‌شود که نیازی به تنظیمات ندارد، و در صورت نیاز می‌توانید به PostgreSQL مهاجرت کنید.</p></div></div>
+      <div class="q"><button>پس از خرید، به‌روزرسانی هم دریافت می‌کنم؟ <span class="pm">+</span></button><div class="a"><p>بله؛ خریداران راست‌چین به‌روزرسانی‌های نسخهٔ خریداری‌شده را دریافت می‌کنند و پشتیبانی فارسی هم پاسخ‌گوی سوالات نصب و راه‌اندازی است.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container foot">
+    <a href="#top" class="logo">
+      <span class="logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#04120c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span>
+      <span>چت‌فلو</span>
+    </a>
+    <p>© همهٔ حقوق برای توسعه‌دهندهٔ برنامه محفوظ است.</p>
+    <p>دموی آنلاین — میزبانی‌شده روی GitHub Pages</p>
+  </div>
+</footer>
+
+<script>
+/* nav scroll state */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>30),{passive:true});
+
+/* mobile menu */
+const navToggle=document.getElementById('navToggle');
+navToggle.addEventListener('click',()=>nav.classList.toggle('open'));
+document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+/* reveal on scroll */
+const io=new IntersectionObserver(es=>es.forEach((e,i)=>{
+  if(e.isIntersecting){e.target.style.transitionDelay=(i*70)+'ms';e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* feature card glow follow */
+document.querySelectorAll('.feat').forEach(f=>f.addEventListener('pointermove',e=>{
+  const r=f.getBoundingClientRect();
+  f.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
+}));
+
+/* gallery tabs */
+const gal=document.getElementById('gal');
+document.querySelectorAll('#tabs button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('#tabs button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  const f=b.dataset.f;
+  gal.classList.toggle('hide-desktop',f==='m');
+  gal.classList.toggle('hide-mobile',f==='d');
+}));
+
+/* lightbox */
+const shots=[...document.querySelectorAll('.shot')];
+const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap');
+let cur=0,visible=shots;
+function openLb(i){cur=i;const s=visible[i];lbImg.src=s.querySelector('img').src;lbCap.textContent=s.querySelector('.cap').childNodes[0].textContent.trim();lb.classList.add('open');document.body.style.overflow='hidden';}
+function closeLb(){lb.classList.remove('open');document.body.style.overflow='';}
+function step(d){openLb((cur+d+visible.length)%visible.length);}
+shots.forEach((s)=>s.addEventListener('click',()=>{
+  const t=document.querySelector('#tabs button.on').dataset.f;
+  visible=t==='all'?shots:(t==='m'?shots.filter(x=>x.dataset.t==='m'):shots.filter(x=>x.dataset.t==='d'));
+  openLb(visible.indexOf(s));
+}));
+document.getElementById('lbX').onclick=closeLb;
+document.getElementById('lbPrev').onclick=e=>{e.stopPropagation();step(1)};
+document.getElementById('lbNext').onclick=e=>{e.stopPropagation();step(-1)};
+lb.addEventListener('click',e=>{if(e.target===lb)closeLb();});
+addEventListener('keydown',e=>{
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape')closeLb();
+  if(e.key==='ArrowLeft')step(-1);   /* RTL: left = next */
+  if(e.key==='ArrowRight')step(1);
+});
+
+/* faq accordion */
+document.querySelectorAll('.q').forEach(q=>{
+  const btn=q.querySelector('button'),a=q.querySelector('.a');
+  btn.addEventListener('click',()=>{
+    const wasOpen=q.classList.contains('open');
+    document.querySelectorAll('.q.open').forEach(o=>{o.classList.remove('open');o.querySelector('.a').style.maxHeight=0;});
+    if(!wasOpen){q.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
+  });
+});
+</script>
 </body>
 </html>
