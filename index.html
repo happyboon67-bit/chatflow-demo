@@ -536,7 +536,8 @@ function step(d){openLb((cur+d+visible.length)%visible.length);}
 shots.forEach((s)=>s.addEventListener('click',()=>{
   const t=document.querySelector('#tabs button.on').dataset.f;
   visible=t==='all'?shots:(t==='m'?shots.filter(x=>x.dataset.t==='m'):shots.filter(x=>x.dataset.t==='d'));
-  openLb(visible.indexOf(s));
+  const idx=visible.indexOf(s);
+  if(idx>-1)openLb(idx);
 }));
 document.getElementById('lbX').onclick=closeLb;
 document.getElementById('lbPrev').onclick=e=>{e.stopPropagation();step(1)};
