@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>چت‌فلو | پیام‌رسان مدرن لحظه‌ای — دموی آنلاین</title>
-<meta name="description" content="چت‌فلو، پیام‌رسان مدرن و لحظه‌ای با رابط کاربری فارسی، گفتگوی گروهی، کانال، تماس و امنیت پیشرفته. مشاهده دموی آنلاین و خرید از راست‌چین.">
+<title>چت‌فلو | پیام‌رسان مدرن لحظه‌ای — دموی تصویری</title>
+<meta name="description" content="چت‌فلو، پیام‌رسان مدرن و لحظه‌ای با رابط کاربری کاملاً فارسی؛ گفتگوی خصوصی و گروهی، کانال، تماس، ری‌اکشن، امنیت پیشرفته و حالت شب و روز. دموی تصویری برنامه را ببینید.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%2310b981'/><path d='M30 32h40a8 8 0 018 8v16a8 8 0 01-8 8H52l-12 10v-10H30a8 8 0 01-8-8V40a8 8 0 018-8z' fill='white'/></svg>">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
 <style>
@@ -24,13 +24,15 @@ img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .container{width:min(1180px,92%);margin-inline:auto}
-.num{font-feature-settings:"ss01"}
 
 /* ---------- scrollbar ---------- */
 ::-webkit-scrollbar{width:10px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:#1e293b;border-radius:8px;border:2px solid var(--bg)}
 ::-webkit-scrollbar-thumb:hover{background:#334155}
+
+/* ---------- scroll progress ---------- */
+#pb{position:fixed;top:0;inset-inline-start:0;height:3px;width:0;background:linear-gradient(90deg,#34d399,#2dd4bf,#a78bfa);z-index:99;border-radius:0 3px 3px 0;transition:width .12s linear}
 
 /* ---------- nav ---------- */
 nav{position:fixed;inset-inline:0;top:0;z-index:50;transition:.35s;border-bottom:1px solid transparent}
@@ -39,17 +41,18 @@ nav.scrolled{background:rgba(7,11,20,.78);backdrop-filter:blur(18px);-webkit-bac
 .logo{display:flex;align-items:center;gap:.7rem;font-weight:800;font-size:1.25rem}
 .logo-mark{width:42px;height:42px;border-radius:13px;background:var(--grad);display:grid;place-items:center;box-shadow:0 8px 24px -6px rgba(16,185,129,.55)}
 .logo small{display:block;font-size:.62rem;color:var(--muted);font-weight:400;line-height:1.4}
-.nav-links{display:flex;gap:1.8rem;margin-inline-start:auto;font-size:.92rem;color:var(--muted)}
+.nav-links{display:flex;gap:1.8rem;margin-inline-start:auto;font-size:.92rem;color:var(--muted);align-items:center}
 .nav-links a{transition:.2s;position:relative}
-.nav-links a:hover{color:var(--txt)}
-.nav-links a::after{content:"";position:absolute;bottom:-6px;inset-inline-start:0;width:0;height:2px;background:var(--grad);border-radius:2px;transition:.25s}
-.nav-links a:hover::after{width:100%}
+.nav-links a:not(.nav-demo):hover{color:var(--txt)}
+.nav-links a:not(.nav-demo)::after{content:"";position:absolute;bottom:-6px;inset-inline-start:0;width:0;height:2px;background:var(--grad);border-radius:2px;transition:.25s}
+.nav-links a:not(.nav-demo):hover::after{width:100%}
+.nav-demo{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem 1.15rem;border-radius:12px;background:var(--grad);color:#04120c;font-weight:700;font-size:.87rem;box-shadow:0 10px 26px -8px rgba(16,185,129,.55);transition:.28s}
+.nav-demo:hover{transform:translateY(-2px);box-shadow:0 15px 32px -8px rgba(16,185,129,.7)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;padding:.8rem 1.7rem;border-radius:14px;font-weight:700;font-size:.95rem;transition:.28s;position:relative}
 .btn-primary{background:var(--grad);color:#04120c;box-shadow:0 12px 32px -8px rgba(16,185,129,.5)}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px -8px rgba(16,185,129,.65)}
 .btn-ghost{border:1px solid var(--border2);color:var(--txt);background:var(--card)}
 .btn-ghost:hover{background:var(--card2);border-color:rgba(255,255,255,.25);transform:translateY(-2px)}
-.btn-sm{padding:.55rem 1.25rem;border-radius:12px;font-size:.88rem}
 .nav-toggle{display:none;margin-inline-start:auto;font-size:1.5rem;line-height:1;padding:.4rem .6rem;border-radius:10px;border:1px solid var(--border)}
 
 /* ---------- hero ---------- */
@@ -66,7 +69,8 @@ nav.scrolled{background:rgba(7,11,20,.78);backdrop-filter:blur(18px);-webkit-bac
 .badge .dot{width:7px;height:7px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:pulse 2s infinite}
 @keyframes pulse{70%{box-shadow:0 0 0 9px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
 h1{font-size:clamp(2.3rem,5.2vw,3.7rem);font-weight:900;line-height:1.35;margin:1.15rem 0 .4rem}
-h1 .grad{background:linear-gradient(120deg,#34d399,#2dd4bf 40%,#a78bfa);-webkit-background-clip:text;background-clip:text;color:transparent}
+h1 .grad{background:linear-gradient(120deg,#34d399,#2dd4bf 35%,#a78bfa 70%,#34d399);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 5.5s linear infinite}
+@keyframes shimmer{to{background-position:220% center}}
 .hero-sub{font-size:clamp(1.02rem,2vw,1.22rem);font-weight:700;color:#cbd5e1;margin-bottom:.7rem}
 .hero p.lead{color:var(--muted);font-size:.98rem;max-width:33rem;margin-bottom:1.9rem}
 .hero-cta{display:flex;gap:.9rem;flex-wrap:wrap;align-items:center}
@@ -98,6 +102,14 @@ h1 .grad{background:linear-gradient(120deg,#34d399,#2dd4bf 40%,#a78bfa);-webkit-
 .stat:hover{background:var(--card2);transform:translateY(-4px);border-color:rgba(16,185,129,.35)}
 .stat b{display:block;font-size:1.65rem;font-weight:900;background:linear-gradient(120deg,#34d399,#2dd4bf);-webkit-background-clip:text;background-clip:text;color:transparent}
 .stat span{color:var(--muted);font-size:.84rem}
+
+/* ---------- marquee ---------- */
+.marquee{overflow:hidden;border-block:1px solid var(--border);padding:1.05rem 0;background:rgba(255,255,255,.015);margin-top:3.4rem}
+.mq{display:flex;width:max-content;animation:mq 38s linear infinite;direction:ltr}
+.mq:hover{animation-play-state:paused}
+.mq span{display:inline-flex;align-items:center;gap:.55rem;padding:0 1.35rem;color:var(--muted);font-weight:600;font-size:.88rem;white-space:nowrap}
+.mq i{color:#34d399;font-style:normal;font-size:.72rem}
+@keyframes mq{to{transform:translateX(-50%)}}
 
 /* ---------- sections ---------- */
 section{padding:5.2rem 0}
@@ -132,7 +144,7 @@ h2{font-size:clamp(1.65rem,3.4vw,2.4rem);font-weight:900;margin:.9rem 0 .5rem;li
 .lb .lb-cap{text-align:center;color:#cbd5e1;font-size:.92rem;margin-top:1rem;font-weight:600}
 .lb .x{position:absolute;top:1.4rem;inset-inline-start:1.4rem;width:44px;height:44px;border-radius:12px;background:var(--card2);border:1px solid var(--border2);display:grid;place-items:center;font-size:1.15rem;transition:.2s}
 .lb .x:hover{background:rgba(239,68,68,.2);border-color:rgba(239,68,68,.5)}
-.lb .arrow{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:14px;background:var(--card2);border:1px solid var(--border2);display:grid;place-items:center;transition:.2s}
+.lb .arrow{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:14px;background:var(--card2);border:1px solid var(--border2);display:grid;place-items:center;font-size:1.5rem;transition:.2s}
 .lb .arrow:hover{background:rgba(16,185,129,.18);border-color:rgba(16,185,129,.5)}
 .lb .prev{inset-inline-start:1.4rem}.lb .next{inset-inline-end:1.4rem}
 
@@ -142,9 +154,13 @@ h2{font-size:clamp(1.65rem,3.4vw,2.4rem);font-weight:900;margin:.9rem 0 .5rem;li
 .feat::before{content:"";position:absolute;inset:0;background:radial-gradient(420px 130px at var(--mx,50%) -20%,rgba(16,185,129,.12),transparent 70%);opacity:0;transition:.3s}
 .feat:hover{transform:translateY(-6px);border-color:rgba(16,185,129,.4);background:var(--card2)}
 .feat:hover::before{opacity:1}
-.feat .fi{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;margin-bottom:1.05rem;background:var(--grad);box-shadow:0 10px 26px -8px rgba(16,185,129,.5)}
-.feat:nth-child(2n) .fi{background:linear-gradient(135deg,#8b5cf6,#6d28d9);box-shadow:0 10px 26px -8px rgba(139,92,246,.5)}
-.feat:nth-child(3n) .fi{background:linear-gradient(135deg,#ec4899,#be185d);box-shadow:0 10px 26px -8px rgba(236,72,153,.5)}
+.feat .fi{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;margin-bottom:1.05rem}
+.feat:nth-child(6n+1) .fi{background:linear-gradient(135deg,#10b981,#047857);box-shadow:0 10px 26px -8px rgba(16,185,129,.5)}
+.feat:nth-child(6n+2) .fi{background:linear-gradient(135deg,#8b5cf6,#6d28d9);box-shadow:0 10px 26px -8px rgba(139,92,246,.5)}
+.feat:nth-child(6n+3) .fi{background:linear-gradient(135deg,#ec4899,#be185d);box-shadow:0 10px 26px -8px rgba(236,72,153,.5)}
+.feat:nth-child(6n+4) .fi{background:linear-gradient(135deg,#06b6d4,#0e7490);box-shadow:0 10px 26px -8px rgba(6,182,212,.5)}
+.feat:nth-child(6n+5) .fi{background:linear-gradient(135deg,#f59e0b,#b45309);box-shadow:0 10px 26px -8px rgba(245,158,11,.5)}
+.feat:nth-child(6n+6) .fi{background:linear-gradient(135deg,#14b8a6,#0f766e);box-shadow:0 10px 26px -8px rgba(20,184,166,.5)}
 .feat b{display:block;font-size:1.02rem;font-weight:800;margin-bottom:.35rem;position:relative}
 .feat p{color:var(--muted);font-size:.87rem;position:relative}
 
@@ -153,14 +169,20 @@ h2{font-size:clamp(1.65rem,3.4vw,2.4rem);font-weight:900;margin:.9rem 0 .5rem;li
 .tech span{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.3rem;border-radius:99px;background:var(--card);border:1px solid var(--border);font-size:.88rem;color:#cbd5e1;transition:.25s}
 .tech span:hover{border-color:rgba(16,185,129,.45);color:#fff;transform:translateY(-3px)}
 .tech .t-dot{width:8px;height:8px;border-radius:50%;background:var(--grad)}
+.arch{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:2.4rem}
+.arch-card{display:flex;gap:1.1rem;align-items:flex-start;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.6rem 1.5rem;transition:.3s}
+.arch-card:hover{transform:translateY(-4px);border-color:rgba(16,185,129,.4);background:var(--card2)}
+.arch-card .ai{flex-shrink:0;width:52px;height:52px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,#10b981,#047857);box-shadow:0 10px 26px -8px rgba(16,185,129,.5)}
+.arch-card:last-child .ai{background:linear-gradient(135deg,#8b5cf6,#6d28d9);box-shadow:0 10px 26px -8px rgba(139,92,246,.5)}
+.arch-card b{display:block;font-size:1.02rem;font-weight:800;margin-bottom:.3rem}
+.arch-card p{color:var(--muted);font-size:.88rem}
 
-/* cta */
+/* closing panel */
 .cta-panel{position:relative;border-radius:28px;padding:3.6rem 2rem;text-align:center;background:linear-gradient(160deg,rgba(16,185,129,.14),rgba(139,92,246,.1));border:1px solid rgba(16,185,129,.3);overflow:hidden}
 .cta-panel::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,.22),transparent 65%);top:-190px;inset-inline-start:calc(50% - 210px);pointer-events:none}
 .cta-panel h2{position:relative}
-.cta-panel p{color:var(--muted);max-width:32rem;margin:.4rem auto 1.9rem;position:relative}
+.cta-panel p{color:var(--muted);max-width:34rem;margin:.4rem auto 1.9rem;position:relative}
 .cta-btns{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;position:relative}
-.cta-note{margin-top:1.3rem;font-size:.8rem;color:var(--dim);position:relative}
 
 /* faq */
 .faq{max-width:46rem;margin-inline:auto}
@@ -193,12 +215,13 @@ footer{border-top:1px solid var(--border);padding:2.2rem 0;margin-top:2rem}
   .shot.wide{grid-column:span 12}
   .shot.mob{grid-column:span 4}
   .stats{grid-template-columns:repeat(2,1fr)}
+  .arch{grid-template-columns:1fr}
 }
 @media(max-width:680px){
-  .nav-links,.nav-cta{display:none}
+  .nav-links{display:none}
   .nav-toggle{display:block}
-  .nav.open .nav-links{display:flex;position:fixed;inset:74px 0 auto 0;flex-direction:column;background:rgba(7,11,20,.97);backdrop-filter:blur(20px);padding:1.4rem 6%;gap:1.1rem;border-bottom:1px solid var(--border)}
-  .nav.open .nav-links a{font-size:1.05rem}
+  nav.open .nav-links{display:flex;position:fixed;inset:74px 0 auto 0;flex-direction:column;background:rgba(7,11,20,.97);backdrop-filter:blur(20px);padding:1.4rem 6%;gap:1.1rem;border-bottom:1px solid var(--border)}
+  nav.open .nav-links a{font-size:1.05rem}
   .hero{padding-top:7.4rem}
   .feats{grid-template-columns:1fr}
   .shot.mob{grid-column:span 12;max-width:290px}
@@ -207,10 +230,17 @@ footer{border-top:1px solid var(--border);padding:2.2rem 0;margin-top:2rem}
   .stats b{font-size:1.3rem}
   .lb .arrow{width:42px;height:42px}
   section{padding:3.6rem 0}
+  .mq span{font-size:.8rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
 }
 </style>
 </head>
 <body>
+
+<div id="pb"></div>
 
 <!-- ================= NAV ================= -->
 <nav id="nav" class="nav">
@@ -224,8 +254,11 @@ footer{border-top:1px solid var(--border);padding:2.2rem 0;margin-top:2rem}
     <div class="nav-links" id="navLinks">
       <a href="#gallery">تصاویر برنامه</a>
       <a href="#features">امکانات</a>
+      <a href="#tech">تکنولوژی</a>
       <a href="#faq">پرسش‌های متداول</a>
-      <a href="#buy" class="btn btn-primary btn-sm nav-cta">خرید از راست‌چین</a>
+      <a href="#gallery" class="nav-demo">مشاهده دمو
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+      </a>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="منو">☰</button>
   </div>
@@ -253,20 +286,20 @@ footer{border-top:1px solid var(--border);padding:2.2rem 0;margin-top:2rem}
 
   <div class="container hero-in">
     <div class="rv in">
-      <span class="badge"><span class="dot"></span> نسخه ۲.۰ منتشر شد — پشتیبانی از تماس گروهی</span>
+      <span class="badge"><span class="dot"></span> دموی زنده از اجرای واقعی برنامه — نسخهٔ ۲.۰</span>
       <h1>با <span class="grad">چت‌فلو</span><br>تیمت همیشه آنلاینه</h1>
       <p class="hero-sub">پیام‌رسان مدرن، سریع و کاملاً فارسی برای تیم‌ها و کسب‌وکارها</p>
-      <p class="lead">گفتگوی خصوصی، گروه و کانال با سرعت لحظه‌ای؛ همراه با ری‌اکشن، پاسخ، نظرسنجی، ارسال فایل و ویس، تأیید دو مرحله‌ای و حالت شب و روز — همه در یک برنامهٔ زیبا و به‌روز.</p>
+      <p class="lead">گفتگوی خصوصی، گروه و کانال با سرعت لحظه‌ای؛ همراه با ری‌اکشن، پاسخ، منشن، نظرسنجی، ارسال فایل و ویس، تماس صوتی و تصویری، تأیید دو مرحله‌ای و حالت شب و روز — همه در یک برنامهٔ زیبا و به‌روز.</p>
       <div class="hero-cta">
         <a href="#gallery" class="btn btn-primary">مشاهده تصاویر برنامه
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
         </a>
-        <a href="#features" class="btn btn-ghost">امکانات کامل</a>
+        <a href="#features" class="btn btn-ghost">همهٔ امکانات</a>
       </div>
       <div class="hero-trust">
-        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> سورس کامل و قابل نصب</span>
-        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> رابط کاملاً فارسی و راست‌چین</span>
-        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> نصب روی هاست شخصی</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg> پیام‌رسانی لحظه‌ای</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg> امنیت پیشرفته</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> کاملاً فارسی و دو زبانه</span>
       </div>
     </div>
 
@@ -282,11 +315,15 @@ footer{border-top:1px solid var(--border);padding:2.2rem 0;margin-top:2rem}
 
   <div class="container">
     <div class="stats rv">
-      <div class="stat"><b>+۸</b><span>قابلیت حرفه‌ای</span></div>
-      <div class="stat"><b>۱۰۰٪</b><span>فارسی و راست‌چین</span></div>
-      <div class="stat"><b>۲</b><span>تم تیره و روشن</span></div>
-      <div class="stat"><b>لحظه‌ای</b><span>تحویل پیام با WebSocket</span></div>
+      <div class="stat"><b data-n="16" data-s="+">۰</b><span>قابلیت حرفه‌ای</span></div>
+      <div class="stat"><b data-n="2">۰</b><span>زبان — فارسی و انگلیسی</span></div>
+      <div class="stat"><b data-n="2">۰</b><span>تم تیره و روشن</span></div>
+      <div class="stat"><b data-n="100" data-s="٪">۰</b><span>رابط کاربری فارسی</span></div>
     </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="mq" id="mq"></div>
   </div>
 </header>
 
@@ -307,17 +344,17 @@ footer{border-top:1px solid var(--border);padding:2.2rem 0;margin-top:2rem}
     </div>
 
     <div class="gal rv" id="gal">
-      <figure class="shot wide" data-t="d"><img src="s1.jpg" alt="صفحه ساخت اکانت و ورود" loading="lazy"><figcaption class="cap">صفحه ساخت اکانت و ورود <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
-      <figure class="shot wide" data-t="d"><img src="s2.jpg" alt="گفتگوی خصوصی با ری‌اکشن" loading="lazy"><figcaption class="cap">گفتگوی خصوصی با ری‌اکشن و تیک خوانده‌شدن <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
-      <figure class="shot wide" data-t="d"><img src="s3.jpg" alt="گفتگوی گروهی" loading="lazy"><figcaption class="cap">گفتگوی گروهی با چند کاربر و ری‌اکشن <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
-      <figure class="shot wide" data-t="d"><img src="s4.jpg" alt="کانال اطلاع‌رسانی" loading="lazy"><figcaption class="cap">کانال اطلاع‌رسانی با تقسیم‌بندی تاریخ <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
-      <figure class="shot wide" data-t="d"><img src="s5.jpg" alt="حالت روشن" loading="lazy"><figcaption class="cap">حالت روشن — تم روز <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
-      <figure class="shot wide" data-t="d"><img src="s6.jpg" alt="ویرایش پروفایل" loading="lazy"><figcaption class="cap">ویرایش پروفایل و انتخاب رنگ آواتار <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
-      <figure class="shot wide" data-t="d"><img src="s7.jpg" alt="ساخت کانال جدید" loading="lazy"><figcaption class="cap">ساخت کانال عمومی یا خصوصی جدید <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
-      <figure class="shot wide" data-t="d"><img src="s8.jpg" alt="ایموجی‌پیکر" loading="lazy"><figcaption class="cap">ایموجی‌پیکر دسته‌بندی‌شده <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
-      <figure class="shot mob" data-t="m"><img src="s9.jpg" alt="نسخه موبایل — لیست گفتگوها" loading="lazy"><figcaption class="cap">نسخه موبایل — لیست گفتگوها <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
-      <figure class="shot mob" data-t="m"><img src="s10.jpg" alt="نسخه موبایل — گفتگو" loading="lazy"><figcaption class="cap">نسخه موبایل — تم تیره <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
-      <figure class="shot mob" data-t="m"><img src="s11.jpg" alt="نسخه موبایل — تم روشن" loading="lazy"><figcaption class="cap">نسخه موبایل — تم روشن <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot full" data-t="d"><img src="s3.jpg" alt="نمای اصلی برنامه — کانال‌ها، اعضا و گفتگو" loading="lazy"><figcaption class="cap"><span class="cap-t">نمای اصلی برنامه — کانال‌ها، اعضا و گفتگو</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><img src="s1.jpg" alt="صفحه ساخت اکانت و ورود" loading="lazy"><figcaption class="cap"><span class="cap-t">صفحه ورود و ثبت‌نام با انتخاب رنگ آواتار</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><img src="s2.jpg" alt="گفتگوی گروهی با پیام پین‌شده" loading="lazy"><figcaption class="cap"><span class="cap-t">گفتگوی گروهی با پیام پین‌شده و ری‌اکشن</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><img src="s4.jpg" alt="کانال اطلاع‌رسانی" loading="lazy"><figcaption class="cap"><span class="cap-t">کانال اطلاع‌رسانی با تقسیم‌بندی تاریخ</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><img src="s5.jpg" alt="حالت روشن" loading="lazy"><figcaption class="cap"><span class="cap-t">حالت روشن — تم روز</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><img src="s6.jpg" alt="ویرایش پروفایل" loading="lazy"><figcaption class="cap"><span class="cap-t">ویرایش پروفایل و تأیید دو مرحله‌ای</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><img src="s7.jpg" alt="ساخت کانال جدید" loading="lazy"><figcaption class="cap"><span class="cap-t">ساخت کانال عمومی یا خصوصی جدید</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><img src="s8.jpg" alt="ایموجی‌پیکر" loading="lazy"><figcaption class="cap"><span class="cap-t">ایموجی‌پیکر دسته‌بندی‌شده</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot mob" data-t="m"><img src="s9.jpg" alt="نسخه موبایل — لیست گفتگوها" loading="lazy"><figcaption class="cap"><span class="cap-t">موبایل — لیست گفتگوها و کانال‌ها</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot mob" data-t="m"><img src="s10.jpg" alt="نسخه موبایل — گفتگو با تم تیره" loading="lazy"><figcaption class="cap"><span class="cap-t">موبایل — محیط چت (تم تیره)</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot mob" data-t="m"><img src="s11.jpg" alt="نسخه موبایل — گفتگو با تم روشن" loading="lazy"><figcaption class="cap"><span class="cap-t">موبایل — محیط چت (تم روشن)</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
     </div>
   </div>
 </section>
@@ -337,22 +374,30 @@ footer{border-top:1px solid var(--border);padding:2.2rem 0;margin-top:2rem}
 <section id="features" style="background:linear-gradient(rgba(255,255,255,.015),transparent)">
   <div class="container">
     <div class="sec-head rv">
-      <span class="sec-tag">امکانات</span>
-      <h2>هر چیزی که از یک پیام‌رسان حرفه‌ای انتظار دارید</h2>
-      <p>چت‌فلو فقط یک چت ساده نیست؛ یک پلتفرم کامل ارتباطی است.</p>
+      <span class="sec-tag">امکانات برنامه</span>
+      <h2>همهٔ امکانات چت‌فلو در یک نگاه</h2>
+      <p>چت‌فلو فقط یک چت ساده نیست؛ یک پلتفرم کامل ارتباطی با بیش از ۱۶ قابلیت حرفه‌ای است.</p>
     </div>
     <div class="feats">
-      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#04120c" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><b>پیام‌رسانی لحظه‌ای</b><p>تحویل فوری پیام با فناوری WebSocket و تیک خوانده‌شدن، بدون رفرش صفحه.</p></div>
-      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><b>گروه و کانال</b><p>ساخت گروه‌های چندنفره و کانال‌های عمومی یا خصوصی با دعوت‌نامه و مدیریت اعضا.</p></div>
-      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg></span><b>ری‌اکشن و پاسخ</b><p>واکنشگذاری با ایموجی روی هر پیام، پاسخ به پیام و پین کردن پیام‌های مهم.</p></div>
-      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#04120c" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2" ry="2"/></svg></span><b>تماس صوتی و تصویری</b><p>تماس مستقیم با کاربران و تماس گروهی داخل گروه‌ها، بدون ابزار جانبی.</p></div>
-      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><b>امنیت پیشرفته</b><p>تأیید دو مرحله‌ای (2FA)، رمزنگاری پسوردها و سیستم گزارش و مسدودسازی کاربران.</p></div>
+      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><b>پیام‌رسانی لحظه‌ای</b><p>تحویل فوری پیام با فناوری WebSocket و تیک خوانده‌شدن، بدون رفرش صفحه.</p></div>
+      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><b>چت خصوصی و گروهی</b><p>گفتگوی دو‌نفرهٔ خصوصی و گروه‌های چندنفره با مدیریت کامل اعضا.</p></div>
+      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></span><b>کانال عمومی و خصوصی</b><p>ساخت کانال با نام کاربری اختصاصی، پیام پین‌شده و دعوت‌نامهٔ اعضا.</p></div>
+      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg></span><b>ری‌اکشن ایموجی</b><p>واکنش‌گذاری با ایموجی روی هر پیام؛ دیدن واکنش‌های دیگران به‌صورت زنده.</p></div>
+      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/></svg></span><b>پاسخ و منشن</b><p>پاسخ مستقیم به هر پیام و منشن کردن @کاربران برای اطلاع‌رسانی سریع.</p></div>
+      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="8" cy="14" r="1"/><circle cx="12" cy="14" r="1"/><circle cx="16" cy="14" r="1"/><path d="M9 9h.01M15 9h.01"/></svg></span><b>ایموجی‌پیکر کامل</b><p>پنل ایموجی با دسته‌بندی (شکلک‌ها، اشیا، قلب‌ها و ژست‌ها) برای هر پیام.</p></div>
       <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg></span><b>فایل، عکس و پیام صوتی</b><p>ارسال عکس، فایل و ضبط پیام صوتی داخل چت با پیش‌نمایش و دانلود مستقیم.</p></div>
+      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2" ry="2"/></svg></span><b>تماس صوتی و تصویری</b><p>تماس مستقیم با کاربران و تماس گروهی داخل گروه‌ها، بدون ابزار جانبی.</p></div>
       <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></span><b>نظرسنجی</b><p>ساخت نظرسنجی داخل گروه برای تصمیم‌گیری‌های سریع و شفاف تیمی.</p></div>
-      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#04120c" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span><b>حالت شب و روز</b><p>تم تیره و روشن با سوییچ یک‌کلیکی و ذخیرهٔ خودکار انتخاب کاربر.</p></div>
+      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span><b>حالت شب و روز</b><p>تم تیره و روشن با سوییچ یک‌کلیکی و ذخیرهٔ خودکار انتخاب کاربر.</p></div>
+      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><b>دو زبانه</b><p>رابط کاربری فارسی و انگلیسی با تغییر لحظه‌ای زبان از داخل برنامه.</p></div>
+      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><b>پروفایل شخصی</b><p>انتخاب رنگ آواتار، نام نمایشی، بیوگرافی و نام کاربری اختصاصی.</p></div>
+      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><b>امنیت پیشرفته</b><p>تأیید دو مرحله‌ای (2FA)، رمزنگاری پسوردها و سیستم گزارش و مسدودسازی کاربران.</p></div>
+      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span><b>اعلان خوانده‌نشده</b><p>بَج شمارندهٔ پیام‌های ناخوانده روی هر گفتگو تا هیچ پیامی از دست نرود.</p></div>
+      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><b>جستجوی سریع</b><p>جستجوی لحظه‌ای کاربران، گروه‌ها و کانال‌ها از همان بالای لیست گفتگوها.</p></div>
+      <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></span><b>وضعیت آنلاین</b><p>نمایش زندهٔ حضور اعضا با نقطهٔ سبز؛ همیشه می‌دانید چه کسی آنلاین است.</p></div>
     </div>
 
-    <div class="sec-head rv" style="margin-top:4.2rem;margin-bottom:1.6rem">
+    <div class="sec-head rv" id="tech" style="margin-top:4.2rem;margin-bottom:1.6rem;scroll-margin-top:90px">
       <span class="sec-tag">تکنولوژی</span>
       <h2 style="font-size:1.5rem">ساخته‌شده با ابزارهای مدرن و به‌روز</h2>
     </div>
@@ -364,22 +409,31 @@ footer{border-top:1px solid var(--border);padding:2.2rem 0;margin-top:2rem}
       <span><i class="t-dot"></i> Tailwind CSS</span>
       <span><i class="t-dot"></i> JWT و bcrypt</span>
     </div>
+    <div class="arch">
+      <div class="arch-card rv">
+        <span class="ai"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M9 2v2M15 20v2M9 20v2M2 15h2M2 9h2M20 15h2M20 9h2"/></svg></span>
+        <div><b>سرور اصلی — Next.js 16</b><p>رندر سریع صفحات، رابط واکنش‌گرا و API امن با احراز هویت توکن JWT و رمزنگاری bcrypt.</p></div>
+      </div>
+      <div class="arch-card rv">
+        <span class="ai"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+        <div><b>سرویس چت لحظه‌ای — Socket.IO</b><p>یک سرویس مستقل و سبک که پیام‌ها، ری‌اکشن‌ها، حضور آنلاین و تماس‌ها را با کمترین تأخیر منتقل می‌کند.</p></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ================= CTA ================= -->
-<section id="buy">
+<!-- ================= CLOSING ================= -->
+<section id="more">
   <div class="container">
     <div class="cta-panel rv">
-      <h2>همین امروز چت‌فلو را به تیم خود اضافه کنید</h2>
-      <p>سورس کامل برنامه را از راست‌چین خریداری کنید، روی هاست خودتان نصب کنید و داده‌هایتان نزد خودتان بماند.</p>
+      <h2>چت‌فلو را از نزدیک دیده‌اید</h2>
+      <p>همهٔ تصاویر این صفحه از اجرای واقعی برنامه ثبت شده‌اند؛ همان چیزی که می‌بینید، همان چیزی است که تجربه خواهید کرد.</p>
       <div class="cta-btns">
-        <a class="btn btn-primary" href="https://rastchin.com" target="_blank" rel="noopener">خرید از راست‌چین
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+        <a class="btn btn-primary" href="#gallery">مشاهده دوبارهٔ تصاویر
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
         </a>
-        <a class="btn btn-ghost" href="#gallery">مشاهده دوبارهٔ تصاویر</a>
+        <a class="btn btn-ghost" href="#features">مرور امکانات</a>
       </div>
-      <p class="cta-note">تحویل فوری پس از خرید • شامل راهنمای نصب • پشتیبانی فارسی</p>
     </div>
   </div>
 </section>
@@ -392,11 +446,11 @@ footer{border-top:1px solid var(--border);padding:2.2rem 0;margin-top:2rem}
       <h2>سوالی دارید؟</h2>
     </div>
     <div class="faq rv">
-      <div class="q"><button>چت‌فلو روی چه هاست‌هایی نصب می‌شود؟ <span class="pm">+</span></button><div class="a"><p>چت‌فلو یک برنامهٔ Node.js است و روی هر هاستی که Node.js یا Bun پشتیبانی کند نصب می‌شود؛ از هاست‌های ایرانی مثل لیارا و چابکان گرفته تا سرورهای خارجی. راهنمای گام‌به‌گام نصب همراه سورس ارائه می‌شود.</p></div></div>
-      <div class="q"><button>رابط کاربری کاملاً فارسی است؟ <span class="pm">+</span></button><div class="a"><p>بله؛ چت‌فلو از ابتدا برای فارسی و راست‌چین طراحی شده و به‌صورت پیش‌فرض فارسی اجرا می‌شود. زبان انگلیسی هم داخل برنامه قابل انتخاب است.</p></div></div>
+      <div class="q"><button>چت‌فلو روی چه دستگاه‌هایی کار می‌کند؟ <span class="pm">+</span></button><div class="a"><p>چت‌فلو یک برنامهٔ تحت وب است و روی هر دستگاهی که مرورگر دارد اجرا می‌شود؛ موبایل، تبلت و دسکتاپ. طراحی برنامه کاملاً واکنش‌گراست و در هر اندازهٔ صفحه تجربه‌ای یکسان و روان دارد.</p></div></div>
+      <div class="q"><button>رابط کاربری کاملاً فارسی است؟ <span class="pm">+</span></button><div class="a"><p>بله؛ چت‌فلو از ابتدا برای فارسی و راست‌چین طراحی شده و به‌صورت پیش‌فرض فارسی اجرا می‌شود. زبان انگلیسی هم داخل برنامه قابل انتخاب است و با یک کلیک زبان تغییر می‌کند.</p></div></div>
       <div class="q"><button>آیا پیام‌ها به‌صورت لحظه‌ای ارسال می‌شوند؟ <span class="pm">+</span></button><div class="a"><p>بله؛ ارتباط با فناوری WebSocket برقرار می‌شود و پیام‌ها، ری‌اکشن‌ها و وضعیت آنلاین بودن اعضا بدون رفرش صفحه به‌صورت زنده به‌روزرسانی می‌شوند.</p></div></div>
-      <div class="q"><button>داده‌ها کجا ذخیره می‌شوند؟ <span class="pm">+</span></button><div class="a"><p>داده‌ها روی هاست خود شما ذخیره می‌شوند. به‌صورت پیش‌فرض از SQLite استفاده می‌شود که نیازی به تنظیمات ندارد، و در صورت نیاز می‌توانید به PostgreSQL مهاجرت کنید.</p></div></div>
-      <div class="q"><button>پس از خرید، به‌روزرسانی هم دریافت می‌کنم؟ <span class="pm">+</span></button><div class="a"><p>بله؛ خریداران راست‌چین به‌روزرسانی‌های نسخهٔ خریداری‌شده را دریافت می‌کنند و پشتیبانی فارسی هم پاسخ‌گوی سوالات نصب و راه‌اندازی است.</p></div></div>
+      <div class="q"><button>امنیت اطلاعات کاربران چطور تأمین می‌شود؟ <span class="pm">+</span></button><div class="a"><p>ورود با توکن امن JWT انجام می‌شود، پسوردها به‌صورت رمزنگاری‌شده ذخیره می‌شوند و قابلیت تأیید دو مرحله‌ای (2FA)، گزارش و مسدودسازی کاربر هم داخل برنامه وجود دارد.</p></div></div>
+      <div class="q"><button>این صفحه چیست و تصاویر از کجاست؟ <span class="pm">+</span></button><div class="a"><p>این صفحه یک دموی تصویری از اجرای واقعی برنامهٔ چت‌فلو است؛ همهٔ تصاویر بدون ویرایش گرافیکی و مستقیماً از خود برنامه گرفته شده‌اند تا دقیقاً همان چیزی را ببینید که در نسخهٔ کامل تجربه می‌کنید.</p></div></div>
     </div>
   </div>
 </section>
@@ -409,14 +463,21 @@ footer{border-top:1px solid var(--border);padding:2.2rem 0;margin-top:2rem}
       <span>چت‌فلو</span>
     </a>
     <p>© همهٔ حقوق برای توسعه‌دهندهٔ برنامه محفوظ است.</p>
-    <p>دموی آنلاین — میزبانی‌شده روی GitHub Pages</p>
+    <p>دموی تصویری برنامهٔ چت‌فلو</p>
   </div>
 </footer>
 
 <script>
+/* scroll progress */
+const pb=document.getElementById('pb');
+addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  pb.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+  nav.classList.toggle('scrolled',scrollY>30);
+},{passive:true});
+
 /* nav scroll state */
 const nav=document.getElementById('nav');
-addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>30),{passive:true});
 
 /* mobile menu */
 const navToggle=document.getElementById('navToggle');
@@ -425,8 +486,8 @@ document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',(
 
 /* reveal on scroll */
 const io=new IntersectionObserver(es=>es.forEach((e,i)=>{
-  if(e.isIntersecting){e.target.style.transitionDelay=(i*70)+'ms';e.target.classList.add('in');io.unobserve(e.target);}
-}),{threshold:.12});
+  if(e.isIntersecting){e.target.style.transitionDelay=(i*60)+'ms';e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.1});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
 /* feature card glow follow */
@@ -434,6 +495,26 @@ document.querySelectorAll('.feat').forEach(f=>f.addEventListener('pointermove',e
   const r=f.getBoundingClientRect();
   f.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
 }));
+
+/* marquee build (duplicated for seamless loop) */
+const mqItems=['پیام لحظه‌ای','ری‌اکشن ایموجی','کانال خصوصی','تماس گروهی','نظرسنجی','پیام صوتی','منشن کاربران','ایموجی‌پیکر','حالت شب و روز','دو زبانه','تأیید دو مرحله‌ای','وضعیت آنلاین'];
+const mq=document.getElementById('mq');
+mq.innerHTML=[...mqItems,...mqItems].map(t=>`<span>${t} <i>✦</i></span>`).join('');
+
+/* animated counters (Persian digits) */
+const nf=new Intl.NumberFormat('fa-IR');
+const cio=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  cio.unobserve(e.target);
+  const el=e.target,to=+el.dataset.n,suf=el.dataset.s||'';
+  const t0=performance.now();
+  (function f(t){
+    const p=Math.min(1,(t-t0)/1300),v=Math.round(to*(1-Math.pow(1-p,3)));
+    el.textContent=nf.format(v)+suf;
+    if(p<1)requestAnimationFrame(f);
+  })(t0);
+}),{threshold:.6});
+document.querySelectorAll('[data-n]').forEach(el=>cio.observe(el));
 
 /* gallery tabs */
 const gal=document.getElementById('gal');
@@ -449,7 +530,7 @@ document.querySelectorAll('#tabs button').forEach(b=>b.addEventListener('click',
 const shots=[...document.querySelectorAll('.shot')];
 const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap');
 let cur=0,visible=shots;
-function openLb(i){cur=i;const s=visible[i];lbImg.src=s.querySelector('img').src;lbCap.textContent=s.querySelector('.cap').childNodes[0].textContent.trim();lb.classList.add('open');document.body.style.overflow='hidden';}
+function openLb(i){cur=i;const s=visible[i];lbImg.src=s.querySelector('img').src;lbCap.textContent=s.querySelector('.cap-t').textContent.trim();lb.classList.add('open');document.body.style.overflow='hidden';}
 function closeLb(){lb.classList.remove('open');document.body.style.overflow='';}
 function step(d){openLb((cur+d+visible.length)%visible.length);}
 shots.forEach((s)=>s.addEventListener('click',()=>{
