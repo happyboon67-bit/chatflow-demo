@@ -23,7 +23,7 @@
   --grad:linear-gradient(135deg,#10b981,#14b8a6 55%,#0ea5a0);
   --r:20px; --shadow:0 24px 60px -12px rgba(0,0,0,.55);
   --soft:rgba(255,255,255,.015); --header-bg:rgba(7,11,20,.78); --menu-bg:rgba(7,11,20,.97);
-  --chip-bg:rgba(13,20,32,.82); --grid-line:rgba(148,163,184,.05); --net:rgba(148,163,184,.13);
+  --chip-bg:rgba(13,20,32,.82); --grid-line:rgba(148,163,184,.07); --net:rgba(148,163,184,.48);
   --badge-txt:#6ee7b7; --badge-bg:rgba(16,185,129,.09); --badge-bd:rgba(16,185,129,.3);
   --sb-thumb:#1e293b; --sb-thumb-h:#334155;
 }
@@ -32,7 +32,7 @@ html[data-theme="light"]{
   --border:rgba(13,35,66,.1); --border2:rgba(13,35,66,.2);
   --txt:#0d1b2e; --txt-soft:#31435c; --muted:#4c617b; --dim:#7b8ea6;
   --soft:#e9eff7; --header-bg:rgba(255,255,255,.82); --menu-bg:rgba(255,255,255,.97);
-  --chip-bg:rgba(255,255,255,.92); --grid-line:rgba(60,95,140,.08); --net:rgba(60,95,140,.16);
+  --chip-bg:rgba(255,255,255,.92); --grid-line:rgba(60,95,140,.1); --net:rgba(60,95,140,.38);
   --badge-txt:#047857; --badge-bg:rgba(5,150,105,.08); --badge-bd:rgba(5,150,105,.3);
   --sb-thumb:#c4d1e2; --sb-thumb-h:#a8bdd4;
   --shadow:0 24px 60px -22px rgba(30,60,110,.22);
@@ -94,9 +94,9 @@ html:not([data-theme="light"]) .theme-btn .moon{opacity:0;transform:rotate(-90de
 .orb-3{width:340px;height:340px;background:radial-gradient(circle,rgba(236,72,153,.14),transparent 65%);top:34%;inset-inline-start:44%;animation:drift 16s ease-in-out infinite alternate}
 @keyframes drift{to{transform:translate(-46px,36px) scale(1.12)}}
 .grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(148,163,184,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.05) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 85% 62% at 50% 28%,#000 25%,transparent 72%);pointer-events:none}
-.net{position:absolute;inset:0;opacity:.5;color:var(--net);pointer-events:none;mask-image:radial-gradient(ellipse 70% 60% at 60% 30%,#000 10%,transparent 70%)}
+.net{position:absolute;inset:0;opacity:.95;color:var(--net);pointer-events:none;mask-image:radial-gradient(ellipse 95% 80% at 60% 32%,#000 35%,transparent 85%);filter:drop-shadow(0 0 6px rgba(52,211,153,.25))}
 html[data-theme="light"] .orb{opacity:.3}
-html[data-theme="light"] .net{opacity:.4}
+html[data-theme="light"] .net{opacity:.75}
 .hero-in{display:grid;grid-template-columns:1.05fr .95fr;gap:3.2rem;align-items:center;position:relative}
 .badge{display:inline-flex;align-items:center;gap:.5rem;padding:.42rem 1.05rem;border-radius:99px;background:var(--badge-bg);border:1px solid var(--badge-bd);color:var(--badge-txt);font-size:.83rem;font-weight:600}
 .badge .dot{width:7px;height:7px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:pulse 2s infinite}
@@ -312,12 +312,12 @@ footer{border-top:1px solid var(--border);padding:2.2rem 0;margin-top:2rem}
   <div class="grid-bg"></div>
   <svg class="net" width="100%" height="100%" aria-hidden="true">
     <defs></defs>
-    <g stroke="currentColor" stroke-width="1" fill="none">
+    <g stroke="currentColor" stroke-width="1.5" fill="none">
       <path d="M80 140 L260 90 L420 170 L600 110"/><path d="M260 90 L330 260 L180 340 L80 140"/>
       <path d="M1100 120 L940 200 L1040 330 L1210 260 L1100 120"/><path d="M940 200 L820 90"/>
       <path d="M600 110 L760 60 L940 200"/><path d="M330 260 L520 320 L600 110"/>
     </g>
-    <g fill="rgba(52,211,153,.55)">
+    <g fill="rgba(52,211,153,.9)">
       <circle cx="80" cy="140" r="3.4"/><circle cx="260" cy="90" r="2.6"/><circle cx="420" cy="170" r="2.2"/>
       <circle cx="600" cy="110" r="3"/><circle cx="330" cy="260" r="2.4"/><circle cx="180" cy="340" r="2"/>
       <circle cx="760" cy="60" r="2.6"/><circle cx="1100" cy="120" r="3.2"/><circle cx="940" cy="200" r="2.4"/>
