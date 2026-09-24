@@ -1,21 +1,47 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>چت‌فلو | پیام‌رسان مدرن لحظه‌ای — دموی تصویری</title>
-<meta name="description" content="چت‌فلو، پیام‌رسان مدرن و لحظه‌ای با رابط کاربری کاملاً فارسی؛ گفتگوی خصوصی و گروهی، کانال، تماس، ری‌اکشن، امنیت پیشرفته و حالت شب و روز. دموی تصویری برنامه را ببینید.">
+<meta name="description" content="چت‌فلو، پیام‌رسان مدرن و لحظه‌ای با رابط کاربری کاملاً فارسی؛ گفتگوی خصوصی و گروهی، کانال، تماس، ری‌اکشن، نظرسنجی، امنیت پیشرفته و تم تاریک و روشن. دموی تصویری با ۲۰ اسکرین‌شات واقعی از برنامه.">
+<meta name="theme-color" content="#070b14" id="metaTheme">
+<script>(function(){try{var t=localStorage.getItem('cf-theme');if(t!=='light'&&t!=='dark')t='dark';document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme='dark'}})()</script>
+<meta property="og:title" content="چت‌فلو | پیام‌رسان مدرن لحظه‌ای — دموی تصویری">
+<meta property="og:description" content="دموی تصویری چت‌فلو با ۲۰ اسکرین‌شات واقعی از اجرای برنامه — گفتگو، نظرسنجی، امنیت و تم شب و روز">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://happyboon67-bit.github.io/chatflow-demo/">
+<meta property="og:image" content="https://happyboon67-bit.github.io/chatflow-demo/s3.jpg">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%2310b981'/><path d='M30 32h40a8 8 0 018 8v16a8 8 0 01-8 8H52l-12 10v-10H30a8 8 0 01-8-8V40a8 8 0 018-8z' fill='white'/></svg>">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
 <style>
 :root{
   --bg:#070b14; --bg2:#0a101d; --card:rgba(255,255,255,.035); --card2:rgba(255,255,255,.06);
   --border:rgba(255,255,255,.08); --border2:rgba(255,255,255,.14);
-  --txt:#e8edf5; --muted:#94a3b8; --dim:#64748b;
+  --txt:#e8edf5; --txt-soft:#cbd5e1; --muted:#94a3b8; --dim:#64748b;
   --em:#10b981; --teal:#14b8a6; --violet:#8b5cf6; --pink:#ec4899;
   --grad:linear-gradient(135deg,#10b981,#14b8a6 55%,#0ea5a0);
   --r:20px; --shadow:0 24px 60px -12px rgba(0,0,0,.55);
+  --soft:rgba(255,255,255,.015); --header-bg:rgba(7,11,20,.78); --menu-bg:rgba(7,11,20,.97);
+  --chip-bg:rgba(13,20,32,.82); --grid-line:rgba(148,163,184,.05); --net:rgba(148,163,184,.13);
+  --badge-txt:#6ee7b7; --badge-bg:rgba(16,185,129,.09); --badge-bd:rgba(16,185,129,.3);
+  --sb-thumb:#1e293b; --sb-thumb-h:#334155;
 }
+html[data-theme="light"]{
+  --bg:#f2f6fb; --bg2:#ffffff; --card:#ffffff; --card2:#eef3f9;
+  --border:rgba(13,35,66,.1); --border2:rgba(13,35,66,.2);
+  --txt:#0d1b2e; --txt-soft:#31435c; --muted:#4c617b; --dim:#7b8ea6;
+  --soft:#e9eff7; --header-bg:rgba(255,255,255,.82); --menu-bg:rgba(255,255,255,.97);
+  --chip-bg:rgba(255,255,255,.92); --grid-line:rgba(60,95,140,.08); --net:rgba(60,95,140,.16);
+  --badge-txt:#047857; --badge-bg:rgba(5,150,105,.08); --badge-bd:rgba(5,150,105,.3);
+  --sb-thumb:#c4d1e2; --sb-thumb-h:#a8bdd4;
+  --shadow:0 24px 60px -22px rgba(30,60,110,.22);
+}
+html.theming body,html.theming nav,html.theming section,html.theming .chip,html.theming .stat,
+html.theming .feat,html.theming .q,html.theming .tech span,html.theming .tabs,html.theming .shot,
+html.theming .cta-panel,html.theming .arch-card,html.theming footer,html.theming .btn-ghost,
+html.theming .theme-btn,html.theming .nav-toggle{transition:background .5s ease,color .5s ease,border-color .5s ease,box-shadow .5s ease}
+section.alt{background:var(--soft)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:Vazirmatn,system-ui,sans-serif;background:var(--bg);color:var(--txt);line-height:1.9;overflow-x:hidden}
@@ -28,15 +54,15 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit
 /* ---------- scrollbar ---------- */
 ::-webkit-scrollbar{width:10px}
 ::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:#1e293b;border-radius:8px;border:2px solid var(--bg)}
-::-webkit-scrollbar-thumb:hover{background:#334155}
+::-webkit-scrollbar-thumb{background:var(--sb-thumb);border-radius:8px;border:2px solid var(--bg)}
+::-webkit-scrollbar-thumb:hover{background:var(--sb-thumb-h)}
 
 /* ---------- scroll progress ---------- */
 #pb{position:fixed;top:0;inset-inline-start:0;height:3px;width:0;background:linear-gradient(90deg,#34d399,#2dd4bf,#a78bfa);z-index:99;border-radius:0 3px 3px 0;transition:width .12s linear}
 
 /* ---------- nav ---------- */
 nav{position:fixed;inset-inline:0;top:0;z-index:50;transition:.35s;border-bottom:1px solid transparent}
-nav.scrolled{background:rgba(7,11,20,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom-color:var(--border)}
+nav.scrolled{background:var(--header-bg);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom-color:var(--border)}
 .nav-in{display:flex;align-items:center;gap:2rem;height:74px}
 .logo{display:flex;align-items:center;gap:.7rem;font-weight:800;font-size:1.25rem}
 .logo-mark{width:42px;height:42px;border-radius:13px;background:var(--grad);display:grid;place-items:center;box-shadow:0 8px 24px -6px rgba(16,185,129,.55)}
@@ -54,6 +80,11 @@ nav.scrolled{background:rgba(7,11,20,.78);backdrop-filter:blur(18px);-webkit-bac
 .btn-ghost{border:1px solid var(--border2);color:var(--txt);background:var(--card)}
 .btn-ghost:hover{background:var(--card2);border-color:rgba(255,255,255,.25);transform:translateY(-2px)}
 .nav-toggle{display:none;margin-inline-start:auto;font-size:1.5rem;line-height:1;padding:.4rem .6rem;border-radius:10px;border:1px solid var(--border)}
+.theme-btn{width:42px;height:42px;border-radius:12px;border:1px solid var(--border2);background:var(--card);display:grid;place-items:center;position:relative;color:var(--txt);transition:.25s;flex-shrink:0}
+.theme-btn:hover{border-color:rgba(16,185,129,.55);color:var(--em)}
+.theme-btn svg{grid-area:1/1;transition:.45s}
+html[data-theme="light"] .theme-btn .sun{opacity:0;transform:rotate(90deg) scale(.3)}
+html:not([data-theme="light"]) .theme-btn .moon{opacity:0;transform:rotate(-90deg) scale(.3)}
 
 /* ---------- hero ---------- */
 .hero{position:relative;padding:9.2rem 0 4rem;overflow:hidden}
@@ -63,20 +94,22 @@ nav.scrolled{background:rgba(7,11,20,.78);backdrop-filter:blur(18px);-webkit-bac
 .orb-3{width:340px;height:340px;background:radial-gradient(circle,rgba(236,72,153,.14),transparent 65%);top:34%;inset-inline-start:44%;animation:drift 16s ease-in-out infinite alternate}
 @keyframes drift{to{transform:translate(-46px,36px) scale(1.12)}}
 .grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(148,163,184,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.05) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 85% 62% at 50% 28%,#000 25%,transparent 72%);pointer-events:none}
-.net{position:absolute;inset:0;opacity:.5;pointer-events:none;mask-image:radial-gradient(ellipse 70% 60% at 60% 30%,#000 10%,transparent 70%)}
+.net{position:absolute;inset:0;opacity:.5;color:var(--net);pointer-events:none;mask-image:radial-gradient(ellipse 70% 60% at 60% 30%,#000 10%,transparent 70%)}
+html[data-theme="light"] .orb{opacity:.3}
+html[data-theme="light"] .net{opacity:.4}
 .hero-in{display:grid;grid-template-columns:1.05fr .95fr;gap:3.2rem;align-items:center;position:relative}
-.badge{display:inline-flex;align-items:center;gap:.5rem;padding:.42rem 1.05rem;border-radius:99px;background:rgba(16,185,129,.09);border:1px solid rgba(16,185,129,.3);color:#6ee7b7;font-size:.83rem;font-weight:600}
+.badge{display:inline-flex;align-items:center;gap:.5rem;padding:.42rem 1.05rem;border-radius:99px;background:var(--badge-bg);border:1px solid var(--badge-bd);color:var(--badge-txt);font-size:.83rem;font-weight:600}
 .badge .dot{width:7px;height:7px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:pulse 2s infinite}
 @keyframes pulse{70%{box-shadow:0 0 0 9px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
 h1{font-size:clamp(2.3rem,5.2vw,3.7rem);font-weight:900;line-height:1.35;margin:1.15rem 0 .4rem}
 h1 .grad{background:linear-gradient(120deg,#34d399,#2dd4bf 35%,#a78bfa 70%,#34d399);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 5.5s linear infinite}
 @keyframes shimmer{to{background-position:220% center}}
-.hero-sub{font-size:clamp(1.02rem,2vw,1.22rem);font-weight:700;color:#cbd5e1;margin-bottom:.7rem}
+.hero-sub{font-size:clamp(1.02rem,2vw,1.22rem);font-weight:700;color:var(--txt-soft);margin-bottom:.7rem}
 .hero p.lead{color:var(--muted);font-size:.98rem;max-width:33rem;margin-bottom:1.9rem}
 .hero-cta{display:flex;gap:.9rem;flex-wrap:wrap;align-items:center}
 .hero-trust{display:flex;gap:1.4rem;flex-wrap:wrap;margin-top:1.7rem;color:var(--dim);font-size:.83rem}
 .hero-trust span{display:inline-flex;align-items:center;gap:.42rem}
-.hero-trust svg{color:#34d399}
+.hero-trust svg{color:var(--em)}
 
 /* phone mockup */
 .mock-wrap{position:relative;display:grid;place-items:center;min-height:560px}
@@ -86,7 +119,7 @@ h1 .grad{background:linear-gradient(120deg,#34d399,#2dd4bf 35%,#a78bfa 70%,#34d3
 .phone::after{content:"";position:absolute;top:16px;left:calc(50% - 28px);transform:translateX(-50%);width:9px;height:9px;border-radius:50%;background:#0f1a2a;z-index:4;box-shadow:inset 0 0 2px 1px #1e2b40}
 .phone .screen{border-radius:36px;overflow:hidden;background:#0d1420}
 .phone .screen img{width:100%;height:auto}
-.chip{position:absolute;display:flex;align-items:center;gap:.6rem;padding:.7rem 1.05rem;border-radius:16px;background:rgba(13,20,32,.82);border:1px solid var(--border2);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font-size:.85rem;font-weight:600;box-shadow:0 16px 40px -12px rgba(0,0,0,.6);white-space:nowrap}
+.chip{position:absolute;display:flex;align-items:center;gap:.6rem;padding:.7rem 1.05rem;border-radius:16px;background:var(--chip-bg);border:1px solid var(--border2);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font-size:.85rem;font-weight:600;box-shadow:0 16px 40px -12px rgba(0,0,0,.6);white-space:nowrap}
 .chip .ico{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;font-size:1rem}
 .chip small{display:block;color:var(--muted);font-size:.72rem;font-weight:400;line-height:1.5}
 .chip-1{top:9%;inset-inline-start:2%;animation:floaty 7s 0.6s ease-in-out infinite}
@@ -97,24 +130,24 @@ h1 .grad{background:linear-gradient(120deg,#34d399,#2dd4bf 35%,#a78bfa 70%,#34d3
 .chip-3 .ico{background:rgba(236,72,153,.16)}
 
 /* stats */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3.6rem;position:relative}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem;margin-top:3.6rem;position:relative}
 .stat{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.35rem 1rem;text-align:center;transition:.3s}
 .stat:hover{background:var(--card2);transform:translateY(-4px);border-color:rgba(16,185,129,.35)}
 .stat b{display:block;font-size:1.65rem;font-weight:900;background:linear-gradient(120deg,#34d399,#2dd4bf);-webkit-background-clip:text;background-clip:text;color:transparent}
 .stat span{color:var(--muted);font-size:.84rem}
 
 /* ---------- marquee ---------- */
-.marquee{overflow:hidden;border-block:1px solid var(--border);padding:1.05rem 0;background:rgba(255,255,255,.015);margin-top:3.4rem}
+.marquee{overflow:hidden;border-block:1px solid var(--border);padding:1.05rem 0;background:var(--soft);margin-top:3.4rem}
 .mq{display:flex;width:max-content;animation:mq 38s linear infinite;direction:ltr}
 .mq:hover{animation-play-state:paused}
 .mq span{display:inline-flex;align-items:center;gap:.55rem;padding:0 1.35rem;color:var(--muted);font-weight:600;font-size:.88rem;white-space:nowrap}
-.mq i{color:#34d399;font-style:normal;font-size:.72rem}
+.mq i{color:var(--em);font-style:normal;font-size:.72rem}
 @keyframes mq{to{transform:translateX(-50%)}}
 
 /* ---------- sections ---------- */
 section{padding:5.2rem 0}
 .sec-head{text-align:center;max-width:38rem;margin:0 auto 3.2rem}
-.sec-tag{display:inline-flex;align-items:center;gap:.45rem;color:#6ee7b7;font-size:.82rem;font-weight:700;letter-spacing:.02em;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25);padding:.35rem 1rem;border-radius:99px}
+.sec-tag{display:inline-flex;align-items:center;gap:.45rem;color:var(--badge-txt);font-size:.82rem;font-weight:700;letter-spacing:.02em;background:var(--badge-bg);border:1px solid var(--badge-bd);padding:.35rem 1rem;border-radius:99px}
 h2{font-size:clamp(1.65rem,3.4vw,2.4rem);font-weight:900;margin:.9rem 0 .5rem;line-height:1.5}
 .sec-head p{color:var(--muted);font-size:.97rem}
 
@@ -122,12 +155,14 @@ h2{font-size:clamp(1.65rem,3.4vw,2.4rem);font-weight:900;margin:.9rem 0 .5rem;li
 .tabs{display:inline-flex;gap:.3rem;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:.3rem;margin-bottom:2.4rem}
 .tabs button{padding:.55rem 1.35rem;border-radius:11px;font-size:.88rem;font-weight:600;color:var(--muted);transition:.25s}
 .tabs button.on{background:var(--grad);color:#04120c;box-shadow:0 8px 22px -6px rgba(16,185,129,.45)}
+.tabs button b{font-weight:800;font-size:.72rem;opacity:.55;margin-inline-start:.25rem}
 .tabs-wrap{text-align:center}
 .gal{display:grid;grid-template-columns:repeat(12,1fr);gap:1.15rem}
 .shot{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);background:var(--card);cursor:zoom-in;transition:.35s}
 .shot:hover{border-color:rgba(16,185,129,.45);transform:translateY(-6px);box-shadow:0 30px 60px -18px rgba(0,0,0,.6)}
 .shot img{width:100%;height:100%;object-fit:cover;transition:.5s}
 .shot:hover img{transform:scale(1.045)}
+.cap-n{position:absolute;top:.8rem;inset-inline-start:.8rem;z-index:2;padding:.2rem .62rem;border-radius:9px;background:rgba(5,10,18,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);color:#e2e8f0;font-size:.72rem;font-weight:700;font-style:normal;letter-spacing:.04em}
 .shot .cap{position:absolute;inset-inline:0;bottom:0;padding:1.7rem 1.1rem .85rem;background:linear-gradient(transparent,rgba(4,8,15,.92));font-size:.85rem;font-weight:600;display:flex;align-items:flex-end;justify-content:space-between;gap:.6rem}
 .shot .cap svg{color:#34d399;flex-shrink:0;opacity:0;transform:translateY(4px);transition:.3s}
 .shot:hover .cap svg{opacity:1;transform:none}
@@ -142,6 +177,7 @@ h2{font-size:clamp(1.65rem,3.4vw,2.4rem);font-weight:900;margin:.9rem 0 .5rem;li
 .lb.open{display:grid}
 .lb img{max-width:min(1080px,94vw);max-height:82vh;border-radius:18px;border:1px solid var(--border2);box-shadow:var(--shadow)}
 .lb .lb-cap{text-align:center;color:#cbd5e1;font-size:.92rem;margin-top:1rem;font-weight:600}
+.lb .lb-count{text-align:center;color:#7c8ea6;font-size:.8rem;margin-top:.3rem;font-weight:600}
 .lb .x{position:absolute;top:1.4rem;inset-inline-start:1.4rem;width:44px;height:44px;border-radius:12px;background:var(--card2);border:1px solid var(--border2);display:grid;place-items:center;font-size:1.15rem;transition:.2s}
 .lb .x:hover{background:rgba(239,68,68,.2);border-color:rgba(239,68,68,.5)}
 .lb .arrow{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:14px;background:var(--card2);border:1px solid var(--border2);display:grid;place-items:center;font-size:1.5rem;transition:.2s}
@@ -166,8 +202,8 @@ h2{font-size:clamp(1.65rem,3.4vw,2.4rem);font-weight:900;margin:.9rem 0 .5rem;li
 
 /* tech */
 .tech{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem}
-.tech span{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.3rem;border-radius:99px;background:var(--card);border:1px solid var(--border);font-size:.88rem;color:#cbd5e1;transition:.25s}
-.tech span:hover{border-color:rgba(16,185,129,.45);color:#fff;transform:translateY(-3px)}
+.tech span{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.3rem;border-radius:99px;background:var(--card);border:1px solid var(--border);font-size:.88rem;color:var(--txt-soft);transition:.25s}
+.tech span:hover{border-color:rgba(16,185,129,.45);color:var(--txt);transform:translateY(-3px)}
 .tech .t-dot{width:8px;height:8px;border-radius:50%;background:var(--grad)}
 .arch{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:2.4rem}
 .arch-card{display:flex;gap:1.1rem;align-items:flex-start;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.6rem 1.5rem;transition:.3s}
@@ -190,7 +226,7 @@ h2{font-size:clamp(1.65rem,3.4vw,2.4rem);font-weight:900;margin:.9rem 0 .5rem;li
 .q:hover{border-color:var(--border2)}
 .q.open{border-color:rgba(16,185,129,.4);background:var(--card2)}
 .q button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.15rem 1.4rem;font-size:.97rem;font-weight:700;text-align:start}
-.q .pm{width:30px;height:30px;border-radius:10px;background:var(--card2);border:1px solid var(--border2);display:grid;place-items:center;flex-shrink:0;transition:.3s;color:#34d399;font-size:1.05rem}
+.q .pm{width:30px;height:30px;border-radius:10px;background:var(--card2);border:1px solid var(--border2);display:grid;place-items:center;flex-shrink:0;transition:.3s;color:var(--em);font-size:1.05rem}
 .q.open .pm{transform:rotate(45deg);background:rgba(16,185,129,.15)}
 .q .a{max-height:0;overflow:hidden;transition:max-height .38s ease}
 .q .a p{padding:0 1.4rem 1.2rem;color:var(--muted);font-size:.9rem}
@@ -214,13 +250,13 @@ footer{border-top:1px solid var(--border);padding:2.2rem 0;margin-top:2rem}
   .feats{grid-template-columns:repeat(2,1fr)}
   .shot.wide{grid-column:span 12}
   .shot.mob{grid-column:span 4}
-  .stats{grid-template-columns:repeat(2,1fr)}
   .arch{grid-template-columns:1fr}
 }
 @media(max-width:680px){
   .nav-links{display:none}
   .nav-toggle{display:block}
-  nav.open .nav-links{display:flex;position:fixed;inset:74px 0 auto 0;flex-direction:column;background:rgba(7,11,20,.97);backdrop-filter:blur(20px);padding:1.4rem 6%;gap:1.1rem;border-bottom:1px solid var(--border)}
+  nav.open .nav-links{display:flex;position:fixed;inset:74px 0 auto 0;flex-direction:column;background:var(--menu-bg);backdrop-filter:blur(20px);padding:1.4rem 6%;gap:1.1rem;border-bottom:1px solid var(--border)}
+  .theme-btn{width:38px;height:38px}
   nav.open .nav-links a{font-size:1.05rem}
   .hero{padding-top:7.4rem}
   .feats{grid-template-columns:1fr}
@@ -260,7 +296,13 @@ footer{border-top:1px solid var(--border);padding:2.2rem 0;margin-top:2rem}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
       </a>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="منو">☰</button>
+    <div class="header-actions" style="display:flex;align-items:center;gap:.6rem;margin-inline-start:auto">
+      <button class="theme-btn" id="themeBtn" aria-label="تغییر تم تاریک و روشن" title="تغییر تم تاریک و روشن">
+        <svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="منو">☰</button>
+    </div>
   </div>
 </nav>
 
@@ -270,7 +312,7 @@ footer{border-top:1px solid var(--border);padding:2.2rem 0;margin-top:2rem}
   <div class="grid-bg"></div>
   <svg class="net" width="100%" height="100%" aria-hidden="true">
     <defs></defs>
-    <g stroke="rgba(148,163,184,.13)" stroke-width="1" fill="none">
+    <g stroke="currentColor" stroke-width="1" fill="none">
       <path d="M80 140 L260 90 L420 170 L600 110"/><path d="M260 90 L330 260 L180 340 L80 140"/>
       <path d="M1100 120 L940 200 L1040 330 L1210 260 L1100 120"/><path d="M940 200 L820 90"/>
       <path d="M600 110 L760 60 L940 200"/><path d="M330 260 L520 320 L600 110"/>
@@ -316,9 +358,10 @@ footer{border-top:1px solid var(--border);padding:2.2rem 0;margin-top:2rem}
   <div class="container">
     <div class="stats rv">
       <div class="stat"><b data-n="16" data-s="+">۰</b><span>قابلیت حرفه‌ای</span></div>
+      <div class="stat"><b data-n="20" data-s="+">۰</b><span>تصویر واقعی از برنامه</span></div>
+      <div class="stat"><b data-n="2">۰</b><span>تم تاریک و روشن</span></div>
       <div class="stat"><b data-n="2">۰</b><span>زبان — فارسی و انگلیسی</span></div>
-      <div class="stat"><b data-n="2">۰</b><span>تم تیره و روشن</span></div>
-      <div class="stat"><b data-n="100" data-s="٪">۰</b><span>رابط کاربری فارسی</span></div>
+      <div class="stat"><b data-n="100" data-s="٪">۰</b><span>رابط فارسی راست‌چین</span></div>
     </div>
   </div>
 
@@ -337,24 +380,33 @@ footer{border-top:1px solid var(--border);padding:2.2rem 0;margin-top:2rem}
     </div>
     <div class="tabs-wrap rv">
       <div class="tabs" id="tabs">
-        <button class="on" data-f="all">همه</button>
-        <button data-f="d">دسکتاپ</button>
-        <button data-f="m">موبایل</button>
+        <button class="on" data-f="all">همه <b>۲۰</b></button>
+        <button data-f="d">دسکتاپ <b>۱۷</b></button>
+        <button data-f="m">موبایل <b>۳</b></button>
       </div>
     </div>
 
     <div class="gal rv" id="gal">
-      <figure class="shot full" data-t="d"><img src="s3.jpg" alt="نمای اصلی برنامه — کانال‌ها، اعضا و گفتگو" loading="lazy"><figcaption class="cap"><span class="cap-t">نمای اصلی برنامه — کانال‌ها، اعضا و گفتگو</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
-      <figure class="shot wide" data-t="d"><img src="s1.jpg" alt="صفحه ساخت اکانت و ورود" loading="lazy"><figcaption class="cap"><span class="cap-t">صفحه ورود و ثبت‌نام با انتخاب رنگ آواتار</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
-      <figure class="shot wide" data-t="d"><img src="s2.jpg" alt="گفتگوی گروهی با پیام پین‌شده" loading="lazy"><figcaption class="cap"><span class="cap-t">گفتگوی گروهی با پیام پین‌شده و ری‌اکشن</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
-      <figure class="shot wide" data-t="d"><img src="s4.jpg" alt="کانال اطلاع‌رسانی" loading="lazy"><figcaption class="cap"><span class="cap-t">کانال اطلاع‌رسانی با تقسیم‌بندی تاریخ</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
-      <figure class="shot wide" data-t="d"><img src="s5.jpg" alt="حالت روشن" loading="lazy"><figcaption class="cap"><span class="cap-t">حالت روشن — تم روز</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
-      <figure class="shot wide" data-t="d"><img src="s6.jpg" alt="ویرایش پروفایل" loading="lazy"><figcaption class="cap"><span class="cap-t">ویرایش پروفایل و تأیید دو مرحله‌ای</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
-      <figure class="shot wide" data-t="d"><img src="s7.jpg" alt="ساخت کانال جدید" loading="lazy"><figcaption class="cap"><span class="cap-t">ساخت کانال عمومی یا خصوصی جدید</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
-      <figure class="shot wide" data-t="d"><img src="s8.jpg" alt="ایموجی‌پیکر" loading="lazy"><figcaption class="cap"><span class="cap-t">ایموجی‌پیکر دسته‌بندی‌شده</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
-      <figure class="shot mob" data-t="m"><img src="s9.jpg" alt="نسخه موبایل — لیست گفتگوها" loading="lazy"><figcaption class="cap"><span class="cap-t">موبایل — لیست گفتگوها و کانال‌ها</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
-      <figure class="shot mob" data-t="m"><img src="s10.jpg" alt="نسخه موبایل — گفتگو با تم تیره" loading="lazy"><figcaption class="cap"><span class="cap-t">موبایل — محیط چت (تم تیره)</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
-      <figure class="shot mob" data-t="m"><img src="s11.jpg" alt="نسخه موبایل — گفتگو با تم روشن" loading="lazy"><figcaption class="cap"><span class="cap-t">موبایل — محیط چت (تم روشن)</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot full" data-t="d"><i class="cap-n">۰۱</i><img src="s3.jpg" alt="نمای اصلی برنامه — کانال‌ها، اعضا و گفتگو" loading="lazy"><figcaption class="cap"><span class="cap-t">نمای اصلی برنامه — کانال‌ها، اعضا و گفتگو</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><i class="cap-n">۰۲</i><img src="s1.jpg" alt="صفحه ساخت اکانت و ورود" loading="lazy"><figcaption class="cap"><span class="cap-t">صفحه ورود و ثبت‌نام با انتخاب رنگ آواتار</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><i class="cap-n">۰۳</i><img src="s2.jpg" alt="گفتگوی گروهی با پیام پین‌شده" loading="lazy"><figcaption class="cap"><span class="cap-t">گفتگوی گروهی با پیام پین‌شده و ری‌اکشن</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><i class="cap-n">۰۴</i><img src="s4.jpg" alt="کانال اطلاع‌رسانی" loading="lazy"><figcaption class="cap"><span class="cap-t">کانال اطلاع‌رسانی با تقسیم‌بندی تاریخ</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><i class="cap-n">۰۵</i><img src="s12.jpg" alt="جستجوی کاربران با نمایش وضعیت آنلاین" loading="lazy"><figcaption class="cap"><span class="cap-t">جستجوی کاربران با نمایش وضعیت آنلاین</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><i class="cap-n">۰۶</i><img src="s13.jpg" alt="پاسخ به پیام با نقل‌قول" loading="lazy"><figcaption class="cap"><span class="cap-t">پاسخ به پیام با نقل‌قول (Reply)</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><i class="cap-n">۰۷</i><img src="s14.jpg" alt="اشتراک‌گذاری تصویر در گفتگو" loading="lazy"><figcaption class="cap"><span class="cap-t">اشتراک‌گذاری تصویر در گفتگو</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><i class="cap-n">۰۸</i><img src="s5.jpg" alt="حالت روشن — تم روز" loading="lazy"><figcaption class="cap"><span class="cap-t">حالت روشن — تم روز</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><i class="cap-n">۰۹</i><img src="s19.jpg" alt="رابط دوزبانه — حالت انگلیسی" loading="lazy"><figcaption class="cap"><span class="cap-t">رابط دوزبانه — حالت انگلیسی (LTR)</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><i class="cap-n">۱۰</i><img src="s8.jpg" alt="ایموجی‌پیکر" loading="lazy"><figcaption class="cap"><span class="cap-t">ایموجی‌پیکر دسته‌بندی‌شده</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><i class="cap-n">۱۱</i><img src="s15.jpg" alt="ساخت نظرسنجی تعاملی" loading="lazy"><figcaption class="cap"><span class="cap-t">ساخت نظرسنجی تعاملی برای گروه‌ها</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><i class="cap-n">۱۲</i><img src="s16.jpg" alt="نظرسنجی با نتایج زنده رأی‌ها" loading="lazy"><figcaption class="cap"><span class="cap-t">نظرسنجی با نتایج زندهٔ رأی‌ها</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><i class="cap-n">۱۳</i><img src="s17.jpg" alt="امنیت پیشرفته — ورود دو مرحله‌ای" loading="lazy"><figcaption class="cap"><span class="cap-t">امنیت پیشرفته — ورود دو مرحله‌ای (2FA)</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><i class="cap-n">۱۴</i><img src="s6.jpg" alt="ویرایش پروفایل با آپلود عکس" loading="lazy"><figcaption class="cap"><span class="cap-t">ویرایش پروفایل با آپلود عکس و رنگ آواتار</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><i class="cap-n">۱۵</i><img src="s7.jpg" alt="ساخت کانال جدید" loading="lazy"><figcaption class="cap"><span class="cap-t">ساخت کانال عمومی یا خصوصی جدید</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><i class="cap-n">۱۶</i><img src="s18.jpg" alt="لینک دعوت با زمان انقضا" loading="lazy"><figcaption class="cap"><span class="cap-t">لینک دعوت با زمان انقضا برای گروه‌ها</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot wide" data-t="d"><i class="cap-n">۱۷</i><img src="s20.jpg" alt="صفحه خوش‌آمدگویی پس از ورود" loading="lazy"><figcaption class="cap"><span class="cap-t">صفحهٔ خوش‌آمدگویی پس از ورود</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot mob" data-t="m"><i class="cap-n">۱۸</i><img src="s9.jpg" alt="نسخه موبایل — لیست گفتگوها" loading="lazy"><figcaption class="cap"><span class="cap-t">موبایل — لیست گفتگوها و کانال‌ها</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot mob" data-t="m"><i class="cap-n">۱۹</i><img src="s10.jpg" alt="نسخه موبایل — گفتگو با تم تیره" loading="lazy"><figcaption class="cap"><span class="cap-t">موبایل — محیط چت (تم تیره)</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
+      <figure class="shot mob" data-t="m"><i class="cap-n">۲۰</i><img src="s11.jpg" alt="نسخه موبایل — گفتگو با تم روشن" loading="lazy"><figcaption class="cap"><span class="cap-t">موبایل — محیط چت (تم روشن)</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></figcaption></figure>
     </div>
   </div>
 </section>
@@ -367,11 +419,12 @@ footer{border-top:1px solid var(--border);padding:2.2rem 0;margin-top:2rem}
   <div style="text-align:center">
     <img id="lbImg" src="" alt="">
     <div class="lb-cap" id="lbCap"></div>
+    <div class="lb-count" id="lbCount"></div>
   </div>
 </div>
 
 <!-- ================= FEATURES ================= -->
-<section id="features" style="background:linear-gradient(rgba(255,255,255,.015),transparent)">
+<section id="features" class="alt">
   <div class="container">
     <div class="sec-head rv">
       <span class="sec-tag">امکانات برنامه</span>
@@ -479,6 +532,19 @@ addEventListener('scroll',()=>{
 /* nav scroll state */
 const nav=document.getElementById('nav');
 
+/* theme toggle */
+const themeBtn=document.getElementById('themeBtn');
+function syncThemeMeta(){const m=document.getElementById('metaTheme');if(m)m.content=document.documentElement.dataset.theme==='light'?'#f2f6fb':'#070b14'}
+themeBtn.addEventListener('click',()=>{
+  const next=document.documentElement.dataset.theme==='light'?'dark':'light';
+  document.documentElement.dataset.theme=next;
+  try{localStorage.setItem('cf-theme',next)}catch(e){}
+  document.documentElement.classList.add('theming');
+  clearTimeout(window.__themeT);window.__themeT=setTimeout(()=>document.documentElement.classList.remove('theming'),700);
+  syncThemeMeta();
+});
+syncThemeMeta();
+
 /* mobile menu */
 const navToggle=document.getElementById('navToggle');
 navToggle.addEventListener('click',()=>nav.classList.toggle('open'));
@@ -486,8 +552,8 @@ document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',(
 
 /* reveal on scroll */
 const io=new IntersectionObserver(es=>es.forEach((e,i)=>{
-  if(e.isIntersecting){e.target.style.transitionDelay=(i*60)+'ms';e.target.classList.add('in');io.unobserve(e.target);}
-}),{threshold:.1});
+  if(e.isIntersecting){e.target.style.transitionDelay=(Math.min(i,8)*60)+'ms';e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:0,rootMargin:'0px 0px -60px 0px'});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
 /* feature card glow follow */
@@ -528,9 +594,9 @@ document.querySelectorAll('#tabs button').forEach(b=>b.addEventListener('click',
 
 /* lightbox */
 const shots=[...document.querySelectorAll('.shot')];
-const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap');
+const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap'),lbCount=document.getElementById('lbCount');
 let cur=0,visible=shots;
-function openLb(i){cur=i;const s=visible[i];lbImg.src=s.querySelector('img').src;lbCap.textContent=s.querySelector('.cap-t').textContent.trim();lb.classList.add('open');document.body.style.overflow='hidden';}
+function openLb(i){cur=i;const s=visible[i];lbImg.src=s.querySelector('img').src;lbCap.textContent=s.querySelector('.cap-t').textContent.trim();lbCount.textContent=nf.format(i+1)+' / '+nf.format(visible.length);lb.classList.add('open');document.body.style.overflow='hidden';}
 function closeLb(){lb.classList.remove('open');document.body.style.overflow='';}
 function step(d){openLb((cur+d+visible.length)%visible.length);}
 shots.forEach((s)=>s.addEventListener('click',()=>{
