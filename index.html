@@ -199,6 +199,27 @@ h2{font-size:clamp(1.65rem,3.4vw,2.4rem);font-weight:900;margin:.9rem 0 .5rem;li
 .feat:nth-child(6n+6) .fi{background:linear-gradient(135deg,#14b8a6,#0f766e);box-shadow:0 10px 26px -8px rgba(20,184,166,.5)}
 .feat b{display:block;font-size:1.02rem;font-weight:800;margin-bottom:.35rem;position:relative}
 .feat p{color:var(--muted);font-size:.87rem;position:relative}
+/* full feature catalog */
+.fcats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.15rem;margin-top:1.8rem}
+.fcat{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem 1.4rem;transition:.32s;position:relative;overflow:hidden}
+.fcat:hover{transform:translateY(-5px);border-color:rgba(16,185,129,.4);background:var(--card2)}
+.fcat-h{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+.fi2{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;flex-shrink:0}
+.fcat:nth-child(8n+1) .fi2{background:linear-gradient(135deg,#10b981,#047857);box-shadow:0 10px 24px -8px rgba(16,185,129,.5)}
+.fcat:nth-child(8n+2) .fi2{background:linear-gradient(135deg,#8b5cf6,#6d28d9);box-shadow:0 10px 24px -8px rgba(139,92,246,.5)}
+.fcat:nth-child(8n+3) .fi2{background:linear-gradient(135deg,#ec4899,#be185d);box-shadow:0 10px 24px -8px rgba(236,72,153,.5)}
+.fcat:nth-child(8n+4) .fi2{background:linear-gradient(135deg,#06b6d4,#0e7490);box-shadow:0 10px 24px -8px rgba(6,182,212,.5)}
+.fcat:nth-child(8n+5) .fi2{background:linear-gradient(135deg,#f59e0b,#b45309);box-shadow:0 10px 24px -8px rgba(245,158,11,.5)}
+.fcat:nth-child(8n+6) .fi2{background:linear-gradient(135deg,#14b8a6,#0f766e);box-shadow:0 10px 24px -8px rgba(20,184,166,.5)}
+.fcat:nth-child(8n+7) .fi2{background:linear-gradient(135deg,#34d399,#059669);box-shadow:0 10px 24px -8px rgba(52,211,153,.5)}
+.fcat:nth-child(8n+8) .fi2{background:linear-gradient(135deg,#a78bfa,#7c3aed);box-shadow:0 10px 24px -8px rgba(167,139,250,.5)}
+.fcat-h b{display:block;font-size:.98rem;font-weight:800;line-height:1.5}
+.fcat-h small{display:block;color:var(--dim);font-size:.73rem;font-weight:400}
+.fcat ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.fcat li{display:flex;gap:.55rem;align-items:flex-start;color:var(--muted);font-size:.84rem;line-height:1.75}
+.fcat li svg{flex-shrink:0;margin-top:.55rem;color:var(--em);opacity:.9}
+@media(max-width:1020px){.fcats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.fcats{grid-template-columns:1fr}}
 
 /* tech */
 .tech{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem}
@@ -343,7 +364,7 @@ footer{border-top:1px solid var(--border);padding:2.2rem 0;margin-top:2rem}
 
   <div class="container">
     <div class="stats rv">
-      <div class="stat"><b data-n="16" data-s="+">۰</b><span>قابلیت حرفه‌ای</span></div>
+      <div class="stat"><b data-n="60" data-s="+">۰</b><span>قابلیت حرفه‌ای</span></div>
       <div class="stat"><b data-n="20" data-s="+">۰</b><span>تصویر واقعی از برنامه</span></div>
       <div class="stat"><b data-n="2">۰</b><span>تم تاریک و روشن</span></div>
       <div class="stat"><b data-n="2">۰</b><span>زبان — فارسی و انگلیسی</span></div>
@@ -415,7 +436,7 @@ footer{border-top:1px solid var(--border);padding:2.2rem 0;margin-top:2rem}
     <div class="sec-head rv">
       <span class="sec-tag">امکانات برنامه</span>
       <h2>همهٔ امکانات چت‌فلو در یک نگاه</h2>
-      <p>چت‌فلو فقط یک چت ساده نیست؛ یک پلتفرم کامل ارتباطی با بیش از ۱۶ قابلیت حرفه‌ای است.</p>
+      <p>چت‌فلو فقط یک چت ساده نیست؛ یک پلتفرم کامل ارتباطی با بیش از ۶۰ قابلیت حرفه‌ای است.</p>
     </div>
     <div class="feats">
       <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><b>پیام‌رسانی لحظه‌ای</b><p>تحویل فوری پیام با فناوری WebSocket و تیک خوانده‌شدن، بدون رفرش صفحه.</p></div>
@@ -435,6 +456,13 @@ footer{border-top:1px solid var(--border);padding:2.2rem 0;margin-top:2rem}
       <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><b>جستجوی سریع</b><p>جستجوی لحظه‌ای کاربران، گروه‌ها و کانال‌ها از همان بالای لیست گفتگوها.</p></div>
       <div class="feat rv"><span class="fi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></span><b>وضعیت آنلاین</b><p>نمایش زندهٔ حضور اعضا با نقطهٔ سبز؛ همیشه می‌دانید چه کسی آنلاین است.</p></div>
     </div>
+
+    <div class="sec-head rv" style="margin-top:4.4rem;margin-bottom:0">
+      <span class="sec-tag">فهرست کامل</span>
+      <h2 style="font-size:1.5rem">تمام امکانات چت‌فلو — از ریز تا درشت</h2>
+      <p>هر قابلیتی که چت‌فلو دارد؛ دسته‌بندی‌شده در ۸ بخش و ۶۱ مورد.</p>
+    </div>
+    <div class="fcats" id="fcats"></div>
 
     <div class="sec-head rv" id="tech" style="margin-top:4.2rem;margin-bottom:1.6rem;scroll-margin-top:90px">
       <span class="sec-tag">تکنولوژی</span>
@@ -611,6 +639,98 @@ document.querySelectorAll('.q').forEach(q=>{
     if(!wasOpen){q.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
   });
 });
+</script>
+<script>
+/* ===== فهرست کامل امکانات — استخراج‌شده از سورس واقعی برنامه ===== */
+(function(){
+  const S=p=>'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>';
+  const CK='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+  const FCATS=[
+  {t:'پیام‌رسانی و گفتگو',d:'هستهٔ اصلی چت‌فلو',ic:S('<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>'),items:[
+    'پیام متنی لحظه‌ای با فناوری WebSocket',
+    'پاسخ (Reply) به هر پیام با نمایش نقل‌قول',
+    'ویرایش پیام ارسالی با نشان «ویرایش‌شده»',
+    'حذف پیام برای همهٔ اعضا',
+    'ری‌اکشن ایموجی روی هر پیام به‌صورت زنده',
+    'ضبط و ارسال پیام صوتی داخل چت',
+    'ارسال عکس با پیش‌نمایش مستقیم',
+    'ارسال فایل تا ۲۰۰ مگابایت با آپلود تکه‌تکه',
+    'نوار پیشرفت زنده هنگام آپلود فایل',
+    'جستجوی کامل پیام‌ها در هر گفتگو',
+    'نشانگر زندهٔ «در حال نوشتن…»',
+    'بَج شمارندهٔ پیام‌های خوانده‌نشده',
+    'تیک خوانده‌شدن پیام (Read Receipts)',
+    'ایموجی‌پیکر با ۱۹۰+ ایموجی دسته‌بندی‌شده',
+    'ساخت ایموجی سفارشی با عکس و GIF متحرک',
+    'استفاده از ایموجی سفارشی با شورت‌کد :اسم:'
+  ]},
+  {t:'گروه‌ها و کانال‌ها',d:'مدیریت کامل تیم',ic:S('<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>'),items:[
+    'کانال عمومی برای همه و کانال خصوصی',
+    'گفتگوی خصوصی دونفره (DM)',
+    'لینک دعوت اختصاصی برای هر گروه',
+    'تاریخ انقضای اختیاری برای لینک دعوت',
+    'عضویت مستقیم با لینک دعوت',
+    'سطوح دسترسی: مالک، ادمین و عضو',
+    'افزودن و حذف (کیک) عضو توسط ادمین',
+    'بی‌صدا کردن موقت عضو با تایمر مشخص',
+    'ویرایش نام، توضیح و ایموجی گروه',
+    'انتقال مالکیت گروه به عضو دیگر',
+    'حذف گروه یا ترک آن در هر لحظه',
+    'پنل اعضا با نقش و وضعیت آنلاین'
+  ]},
+  {t:'پیام پین و نظرسنجی',d:'تصمیم‌گیری تیمی',ic:S('<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>'),items:[
+    'پین کردن پیام‌های مهم گروه',
+    'پنل پیام‌های پین‌شدهٔ هر گفتگو',
+    'نظرسنجی تک‌انتخابی و چندانتخابی',
+    'نمایش نتایج زندهٔ نظرسنجی',
+    'بستن نظرسنجی پس از پایان رأی‌گیری',
+    'پنل آرشیو همهٔ نظرسنجی‌های گروه'
+  ]},
+  {t:'تماس صوتی و تصویری',d:'قدرت‌گرفته از WebRTC',ic:S('<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>'),items:[
+    'تماس تصویری ۱ به ۱ (P2P)',
+    'تماس صوتی ۱ به ۱',
+    'زنگ ورودی تماس (Ringing)',
+    'پذیرش، رد و پایان تماس',
+    'تماس گروهی با لیست حاضرین',
+    'قطع و وصل میکروفون و دوربین',
+    'ادامهٔ تماس روی دستگاه دیگر'
+  ]},
+  {t:'حضور لحظه‌ای',d:'همیشه در جریان',ic:S('<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>'),items:[
+    'پنل کاربران آنلاین به‌صورت زنده',
+    'وضعیت آنلاین، دور، مشغول و آفلاین',
+    'ورود و خروج زندهٔ اعضا از اتاق',
+    'به‌روزرسانی وضعیت بدون رفرش صفحه'
+  ]},
+  {t:'حساب و پروفایل',d:'شخصی‌سازی کامل',ic:S('<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>'),items:[
+    'ثبت‌نام و ورود امن با توکن JWT',
+    'نام نمایشی، بیوگرافی و رنگ آواتار',
+    'آپلود عکس پروفایل اختصاصی',
+    'تغییر رمز عبور از داخل برنامه',
+    'حذف کامل حساب کاربری',
+    'ذخیرهٔ خودکار تنظیمات و زبان کاربر'
+  ]},
+  {t:'امنیت حرفه‌ای',d:'محافظت چندلایه',ic:S('<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>'),items:[
+    'تأیید دو مرحله‌ای (2FA) با TOTP',
+    'کدهای بازیابی یک‌بارمصرف برای ورود',
+    'رمزنگاری bcrypt برای پسوردها',
+    'مسدودسازی کاربران + لیست بلاک',
+    'گزارش تخلف و پنل مدیریت گزارش‌ها',
+    'کنترل دسترسی روی تمام APIها'
+  ]},
+  {t:'رابط کاربری و تجربه',d:'مدرن و فارسی',ic:S('<path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/>'),items:[
+    'تم تاریک و روشن با ذخیرهٔ خودکار',
+    'دو زبانهٔ کامل فارسی و انگلیسی',
+    'راست‌چین خودکار (RTL/LTR)',
+    'ریسپانسیو کامل موبایل و دسکتاپ',
+    'اعلان‌های Toast زیبا',
+    'انیمیشن‌های نرم و مدرن'
+  ]}
+  ];
+  const box=document.getElementById('fcats');
+  if(!box||typeof nf==='undefined')return;
+  box.innerHTML=FCATS.map(c=>'<div class="fcat rv"><div class="fcat-h"><span class="fi2">'+c.ic+'</span><div><b>'+c.t+'</b><small>'+c.d+' — '+nf.format(c.items.length)+' قابلیت</small></div></div><ul>'+c.items.map(x=>'<li>'+CK+'<span>'+x+'</span></li>').join('')+'</ul></div>').join('');
+  document.querySelectorAll('#fcats .rv').forEach(el=>io.observe(el));
+})();
 </script>
 <script>
 /* ===== شبکهٔ متحرک سراسری — Animated Plexus Network ===== */
